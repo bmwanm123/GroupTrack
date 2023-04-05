@@ -64,7 +64,7 @@ $ flask run
 
 #### 交互流程展示
 
-![20220625153551](https://github.com/bmwanm123/GroupSystem/blob/main/VisGroupMeeting/VisGroupMeeting/static/image/GroupTrackVis.gif)
+![20220625153551](https://github.com/bmwanm123/GroupTrack/blob/main/VisGroupMeeting/VisGroupMeeting/static/image/GroupTrackVis.gif)
 
 <!-- ROADMAP -->
 
