@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+verify_ssl = true
+
+[dev-packages]
+tqdm = "*"
+
+[packages]
+flask = "*"
+flask-dotenv = "*"
+python-dotenv = "*"
+tqdm = "*"
+opencv-python = "*"
+
+[requires]
+python_version = "3.6"

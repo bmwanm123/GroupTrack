@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/indexG.css" />
+</head>
+
+<body>
+    <div class="views">
+        <div class="Left">
+            <div class="groupSum">
+                <div class="rv-toolbar">
+                    <div class="rv-toolbar">
+                        <div class="viewName1">Group List View</div>
+                    </div>
+                </div>
+                <svg class="multi"></svg>
+                <!-- <svg class="GlyphList"></svg> -->
+            </div>
+            <div class="groupFilter">
+                <div class="rv-toolbar">
+                    <div class="rv-toolbar">
+                        <div class="viewName2">Agenda Summary View</div>
+                    </div>
+                </div>
+                <svg class="groupCompare"></svg>
+            </div>
+        </div>
+        <div class="Middle">
+
+            <div class="Interaction">
+                <!-- 互动视图 -->
+                <div class="itav">
+                    <!-- 互动视图上面导航 -->
+                    <div class="itav-toolbar">
+                        <div class="viewName">Interaction View</div>
+                        <div class="itav-toolbar-right-component">
+                            <div class="itav-selector">
+                                <span>Select a Group: </span>
+                                <select onchange="">
+                                    <option value="A">ES2001A</option>
+                                    <option value="B" selected="true">ELEA12</option>
+                                    <option value="C">ES2003A</option>
+                                    <option value="D">ES2004A</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-outline-secondary">Edit Agenda</button>
+                            <button type="button" class="btn btn-outline-secondary">Recalculate</button>
+                        </div>
+                    </div>
+                    <!-- 回复关系上方图 -->
+                    <svg class="up">
+                    </svg>
+                    <!-- 回复关系下方图标 -->
+                    <!-- <svg class="down"></svg> -->
+                </div>
+                <!-- 对话视图 -->
+                <div class="rv-container">
+                    <div class="rv-toolbar">
+                        <div class="rv-toolbar">
+                            <div class="viewName5">Detail View</div>
+                            <!-- Button trigger modal -->
+                            <div class="rv-toolbar-right-component">
+                                <button type="button" class="btn btn-outline-secondary"
+                                    onClick="rv.method.drawReplyTreeInModal()" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Enlarge
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog rv-modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="rv-modal-body">
+                                                <svg></svg>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rv" style="overflow-y: scroll">
+                        <svg></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="Pav_Aga">
+                <!-- 学生个人视图 -->
+                <div class="pav-container">
+                    <div class="pav-toolbar">
+                        <div class="pav-toolbar">
+                            <div class="viewName">Person View</div>
+                            <div class="pav-selector">
+                                <span>Features: </span>
+                                <select class="pav-abilitySelector" onchange="pav.method.drawDetailView()">
+                                    <option value="Contribution">Contribution</option>
+                                    <option value="Perplexity">Perplexity</option>
+                                    <option value="Leadership">Leadership</option>
+                                    <option value="Activity">Activity</option>
+                                    <option value="Backchannel">Backchannel</option>
+                                </select>
+                            </div>
+                            <div class="pav-selector">
+                                <span>Select a student: </span>
+                                <select class="pav-studentSelector" onchange="pav.method.changePerson(this.value)">
+                                    <option value="A">A</option>
+                                    <option value="B" selected="true">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <!--                        <option value="L">L</option>-->
+                                    <!--                        <option value="N" selected="true">N</option>-->
+                                    <!--                        <option value="K">K</option>-->
+                                    <!--                        <option value="M">M</option>-->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pav">
+                        <div class="defocus">
+                            <div class="defocus_item1">
+                                <svg></svg>
+                            </div>
+                            <div class="defocus_item2">
+                                <svg></svg>
+                            </div>
+                            <div class="defocus_item3">
+                                <svg></svg>
+                            </div>
+                        </div>
+                        <div class="focused">
+
+                            <svg class="focusRadar"></svg>
+                            <svg class="focusDetail"></svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- 议题进展视图 -->
+                <div class="adv">
+                    <div class="adv-toolbar">
+                        <div class="adv-toolbar">
+                            <div class="viewName3">Agenda View</div>
+                            <div class="adv-searchbar"><input class="form-control" type="text"
+                                    placeholder="Search and Filter">
+                            </div>
+                            <div class="adv-range"><span>TimeSlice: [50~120]: 60s</span><input type="range"
+                                    oninput="adv.method.changeText(this.value)"
+                                    onchange="adv.method.changeSelectorValue(this.value)" value="60" min="50" max="120"
+                                    step="10" class="form-range">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="advbody">
+                        <svg>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="Right">
+            <!-- 上下文视图 -->
+            <div class="ctxv-container">
+                <div class="ctxv-toolbar">
+                    <div class="ctxv-toolbar">
+                        <div class="viewName4">Context View</div>
+                        <div class="ctxv-searchbar"><input class="form-control" type="text"
+                                placeholder="Search and Filter">
+                        </div>
+                    </div>
+                </div>
+                <div class="ctxv">
+                    <svg></svg>
+                </div>
+                <div class="video">
+                    <video controls="controls" muted preload="auto">
+                        <source src="../static/data/video/ES2002a/B.mp4" type="video/mp4">
+                    </video>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"
+        integrity="sha512-HjKxWye8lJGPu5q1u/ZYkHlJrJdm6KGr89E6tOrXeKm1mItb1xusPU8QPcKVhP8F9LjpZT7vsu1Fa+dQywP4eg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script type="text/javascript" async="async" src="../static/js/Summary.js">
+    </script>
+    <!-- 新加js -->
+    <!-- <script type="module" async="async">
+        import { Draw } from "../static/js/draw.js"
+        Draw()
+    </script> -->
+
+    <script>
+
+        // 从后端获取处理好的数据
+        const dialogs = JSON.parse(`{{dialogs|safe}}`).map(v => {
+            if (v.agenda === undefined)
+                v.agenda = '-'
+            return v
+        })
+        console.log(dialogs)
+        const sessions = JSON.parse(`{{sessions|safe}}`)
+        const personal_ability = JSON.parse(`{{personal_ability|safe}}`)
+        const roles = [...new Set(dialogs.map(v => v.role))]  //数组去重
+        //const roles = ['D','B','A','C']
+        //const roles = JSON.parse(`{{roles|safe}}`)
+        const headPos = JSON.parse(`{{headPos|safe}}`)
+        const keywordsOfPersonal = JSON.parse(`{{keywordsOfPersonal|safe}}`)
+        const agendas = JSON.parse(`{{agendas|safe}}`)
+        const chordData = JSON.parse(`{{chordData|safe}}`)
+        const stopwords = new Set(JSON.parse(`{{stopwords|safe}}`))
+        const keyframes = JSON.parse(`{{keyframes|safe}}`)
+        const meetingName = `{{meetingName}}`
+        const personColor = d3.scaleOrdinal(d3.schemeTableau10.slice(4, 4 + roles.length))
+        personColor.domain(roles)
+
+        // endregion
+        // region Reply view
+        const rv = {}
+        rv.config = {
+            w: 800,
+            h: 530,
+            yoffset: 30,
+            xoffset: 40,
+            padding: 20,
+            radius: 15
+        }
+        rv.method = {}
+        rv.method.generateData = function (session_id) {
+            const xhr = new XMLHttpRequest()
+            xhr.open("get", '/replyTree?' + `session_id=${session_id}`, false)
+            xhr.send()
+            const data = JSON.parse(xhr.response)
+            const nodelist = data.nodelist
+            const idx2treenode = data.idx2treenode
+            const lines = []
+            const root = nodelist[0]
+            const pos = []
+            let x = 0
+            let y = 0
+            const ctx = document.createElement("canvas").getContext("2d")
+            ctx.font = "13px Microsoft YaHei"
+            const rects = []
+            const img = []
+
+            function dfs(n) {
+                pos.push({ id: n.id, x: x * rv.config.xoffset, y: y * rv.config.yoffset })
+                img.push({ id: n.id, x: x * rv.config.xoffset - rv.config.radius, y: y * rv.config.yoffset, img: n.img })
+                let fullTextLength = ctx.measureText(dialogs[n.id].text).width
+                let textlength = fullTextLength
+                if (textlength + x * rv.config.xoffset >= 560)
+                    textlength = 560 - x * rv.config.xoffset
+                rects.push({
+                    id: n.id,
+                    x: x * rv.config.xoffset,
+                    y: y * rv.config.yoffset - 7.5,
+                    width: textlength,
+                    fullWidth: fullTextLength,
+                    height: 15
+                })
+                const init_y = y
+                if (n.parent != -1)
+                    lines.push({
+                        x1: x * rv.config.xoffset,
+                        y1: y * rv.config.yoffset,
+                        x2: (x - 1) * rv.config.xoffset + 5,
+                        y2: y * rv.config.yoffset
+                    })
+                x = x + 1
+                let last_y
+                for (let i of n.children) {
+                    y = y + 1
+                    last_y = y
+                    dfs(nodelist[idx2treenode[i]])
+                }
+                x = x - 1
+                if (n.children.length > 0) {
+                    lines.push({
+                        x1: x * rv.config.xoffset + 5,
+                        y1: init_y * rv.config.yoffset,
+                        x2: x * rv.config.xoffset + 5,
+                        y2: last_y * rv.config.yoffset
+                    })
+                }
+            }
+
+            dfs(root)
+            return { pos, lines, rects, img }
+        }
+
+        rv.method.drawReplyTree = (function () {
+            const svg = d3.select('.rv svg')
+                .attr("width", "100%")
+                .attr("height", rv.config.h * 3)
+            //  .attr("style", "max-width: 100%;height: auto; height: intrinsic;")
+            const xOffset = 300
+            const yOffset = 20
+            const legendRectWidth = 15
+
+            // 添加图标
+            const legend = svg.append("g")
+                .attr("transform", `translate(50,50)`)
+                .attr("font-size", 15)
+            // legend.append("g").attr("class", "title")
+            //     .append("text")
+            //     .attr("stroke", "black")
+            //     .attr("font-weight", 1)
+            //     .text(" Legends:")
+            //     .attr("transform", `translate(0,-20)`)
+            legend.selectAll("g").data(roles).join("g").append("text")
+                .attr("y", (d, i) => Math.floor(i / 2) * yOffset)
+                .attr("x", (d, i) => (i % 2) * xOffset)
+                .text(d => d)
+
+            legend.selectAll("g")
+                .append("rect")
+                .attr("x", (d, i) => (i % 2) * xOffset - legendRectWidth - 5)
+                .attr("y", (d, i) => Math.floor(i / 2) * 20 - legendRectWidth / 1.25)
+                .attr("width", legendRectWidth)
+                .attr("height", legendRectWidth)
+                .attr("fill", d => personColor(d))
+            return function (session_id) {
+                svg.selectAll("#tree").remove()
+
+                const g = svg.append("g")
+                    .attr("id", "tree")
+                    .attr("transform", `translate(40,100)`)
+                    .attr("width", "560")
+                    .attr("height", 550)
+                    .style("overflow", "scroll")
+                    .attr("font-size", 13)
+                g.selectAll("line")
+                    .data(rv.data.lines)
+                    .join("line")
+                    .attr("x1", d => d.x1)
+                    .attr("x2", d => d.x2)
+                    .attr("y1", d => d.y1)
+                    .attr("y2", d => d.y2)
+                    .attr("stroke", "grey")
+                g.selectAll("rect")
+                    .data(rv.data.rects)
+                    .join("rect")
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y)
+                    .attr("width", d => d.width)
+                    .attr("height", d => d.height)
+                    .attr("fill", d => personColor(dialogs[d.id].role))
+                g.selectAll("clipPath")
+                    .data(rv.data.rects)
+                    .join("clipPath")
+                    .attr("id", d => "clip" + d.id)
+                    .append("rect")
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y)
+                    .attr("width", d => d.width)
+                    .attr("height", d => d.height)
+
+                g.selectAll("text")
+                    .data(rv.data.pos)
+                    .join("text")
+                    .attr("clip-path", d => `url(#clip${d.id})`)
+                    .attr("alignment-baseline", "middle")
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y)
+                    .text(d => dialogs[d.id].text)
+                    .on('click', (event, d) => {
+                        const dy = ctxv.method.yscale(ctxv.config.initalHeight) - ctxv.method.yscale(0); // Use a fixed width when recentering.
+                        const cy = ctxv.method.yscale(ctxv.data.id2row[d.id])
+                        const [y0, y1] = [cy, cy + dy];
+                        const [Y0, Y1] = ctxv.method.yscale.range();
+                        d3.select('.y.brush')
+                            .call(ctxv.method.brush.move, y1 > Y1 ? [Y1 - dy, Y1]
+                                : y0 < Y0 ? [Y0, Y0 + dy]
+                                    : [y0, y1]);
+                    })
+                    .append("title")
+                    .text(d => dialogs[d.id].text.split(".").join(".\n"))
+
+                const img = g.selectAll("g")
+                    .data(rv.data.img)
+                    .join("g")
+                img.append("circle")
+                    .attr("fill", d => `url(#avatar_${d.id})`)
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y)
+                    .attr("r", rv.config.radius);
+                img.append("svg:defs").append("svg:pattern")
+                    .attr("id", d => `avatar_${d.id}`)
+                    .attr("width", rv.config.radius * 2)
+                    .attr("height", rv.config.radius * 2)
+                    .attr("patternUnits", "objectBoundingBox")
+                    .append("svg:image")
+                    .attr("xlink:href", d => d.img)
+                    .attr("width", rv.config.radius * 2)
+                    .attr("height", rv.config.radius * 2)
+                    .attr("preserveAspectRatio", "xMidYMid slice")
+
+
+            }
+        })()
+        // 详细视图中页面放大函数
+        rv.method.drawReplyTreeInModal = (function () {
+            const svg = d3.select('.rv-modal-body svg')
+                .attr("width", "100%")
+                .attr("height", "100%")
+            //  .attr("style", "max-width: 100%;height: auto; height: intrinsic;")
+            const xOffset = 300
+            const yOffset = 20
+            const legendRectWidth = 15
+
+            const legend = svg.append("g")
+                .attr("transform", `translate(50,50)`)
+                .attr("font-size", 15)
+            // legend.append("g").attr("class", "title")
+            //     .append("text")
+            //     .attr("stroke", "black")
+            //     .attr("font-weight", 1)
+            //     .text(" Legends:")
+            //     .attr("transform", `translate(0,-20)`)
+            legend.selectAll("g").data(roles).join("g").append("text")
+                .attr("y", (d, i) => Math.floor(i / 2) * yOffset)
+                .attr("x", (d, i) => (i % 2) * xOffset)
+                .text(d => d)
+
+            legend.selectAll("g")
+                .append("rect")
+                .attr("x", (d, i) => (i % 2) * xOffset - legendRectWidth - 5)
+                .attr("y", (d, i) => Math.floor(i / 2) * 20 - legendRectWidth / 1.25)
+                .attr("width", legendRectWidth)
+                .attr("height", legendRectWidth)
+                .attr("fill", d => personColor(d))
+            return function () {
+                svg.selectAll("#tree").remove()
+
+                const g = svg.append("g")
+                    .attr("id", "tree")
+                    .attr("transform", `translate(40,100)`)
+                    .attr("width", "100%")
+                    .attr("height", "100%")
+                    .style("overflow", "scroll")
+                    .attr("font-size", 13)
+                g.selectAll("line")
+                    .data(rv.data.lines)
+                    .join("line")
+                    .attr("x1", d => d.x1)
+                    .attr("x2", d => d.x2)
+                    .attr("y1", d => d.y1)
+                    .attr("y2", d => d.y2)
+                    .attr("stroke", "grey")
+                g.selectAll("rect")
+                    .data(rv.data.rects)
+                    .join("rect")
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y)
+                    .attr("width", d => d.fullWidth)
+                    .attr("height", d => d.height)
+                    .attr("fill", d => personColor(dialogs[d.id].role))
+                // g.selectAll("clipPath")
+                //     .data(rv.data.rects)
+                //     .join("clipPath")
+                //     .attr("id", d => "clip" + d.id)
+                //     .append("rect")
+                //     .attr("x", d => d.x)
+                //     .attr("y", d => d.y)
+                //     .attr("width", d => d.fullWidth)
+                //     .attr("height", d => d.height)
+
+                g.selectAll("text")
+                    .data(rv.data.pos)
+                    .join("text")
+                    // .attr("clip-path", d => `url(#clip${d.id})`)
+                    .attr("alignment-baseline", "middle")
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y)
+                    .text(d => dialogs[d.id].text)
+                    .on('click', (event, d) => {
+                        const dy = ctxv.method.yscale(ctxv.config.initalHeight) - ctxv.method.yscale(0); // Use a fixed width when recentering.
+                        const cy = ctxv.method.yscale(ctxv.data.id2row[d.id])
+                        const [y0, y1] = [cy, cy + dy];
+                        const [Y0, Y1] = ctxv.method.yscale.range();
+                        d3.select('.y.brush')
+                            .call(ctxv.method.brush.move, y1 > Y1 ? [Y1 - dy, Y1]
+                                : y0 < Y0 ? [Y0, Y0 + dy]
+                                    : [y0, y1]);
+                    })
+                    .append("title")
+                    .text(d => dialogs[d.id].text.split(".").join(".\n"))
+
+                const img = g.selectAll("g")
+                    .data(rv.data.img)
+                    .join("g")
+                img.append("circle")
+                    .attr("fill", d => `url(#avatar_${d.id})`)
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y)
+                    .attr("r", rv.config.radius);
+                img.append("svg:defs").append("svg:pattern")
+                    .attr("id", d => `avatar_${d.id}`)
+                    .attr("width", rv.config.radius * 2)
+                    .attr("height", rv.config.radius * 2)
+                    .attr("patternUnits", "objectBoundingBox")
+                    .append("svg:image")
+                    .attr("xlink:href", d => d.img)
+                    .attr("width", rv.config.radius * 2)
+                    .attr("height", rv.config.radius * 2)
+                    .attr("preserveAspectRatio", "xMidYMid slice")
+
+
+            }
+        })()
+        // endregion
+
+        // region itav(interaction view)
+        const itav = {} //interactionview
+        itav.config = {
+            width: 1800,
+            height: 900,
+            padding: 20,
+            height2: 100,
+            paddingTop: 100,
+            agendaColor: d3.schemeSet2,// ['#3FC846','#FF606F','#BDBDBD','#4666CB'],
+            maxRy: 100,
+            timeSlice: 10,
+        }
+        itav.method = { // 这个图比较复杂需要重复绘制为避免性能损失所以把固定函数单独放在method里面了
+            xScale: d3.scaleLinear()
+                .domain([0, dialogs[dialogs.length - 1].endTime + 10])
+                .range([0 + itav.config.padding, itav.config.width - itav.config.padding]),
+            yScale: d3.scalePoint()
+                .domain(roles)
+                .range([0 + itav.config.padding, itav.config.height - itav.config.padding])
+                .round(true)
+                .padding(0.5),
+            idx2pos: idx => {
+                const x = itav.method.xScale((Number(dialogs[idx].startTime) + Number(dialogs[idx].endTime)) / 2)
+                const y = itav.method.yScale(dialogs[idx].role)
+                return [x, y]
+            },
+            CubeBezierTo1: (source, target, shouldMove = true) => {
+                const mid_y = (source.y + target.y) / 2
+                const v_source = [source.x, mid_y]
+                const v_target = [target.x, mid_y]
+                const p = d3.path()
+                if (shouldMove)
+                    p.moveTo(source.x, source.y)
+                p.bezierCurveTo(...v_source, ...v_target, target.x, target.y)
+                return p.toString()
+            },
+            lineTo1: (a, b, shouldMove = true) => {
+                const p = d3.path()
+                if (shouldMove)
+                    p.moveTo(a.x, a.y)
+                p.lineTo(b.x, b.y)
+                return p.toString()
+            },
+        }
+        itav.data = generateInteractionViewData(dialogs, sessions)
+        itav.method = Object.assign(itav.method, {
+            click: function (e, d) {
+                const session_id = d.session_id != null ? d.session_id : d3.select(this).attr("class").split("_")[1]
+                console.log(session_id)
+                if (session_id === 'single') {
+                    console.log(session_id)
+                    return
+                }
+                // 更新 rv视图
+                if (d.session_id != null) {
+                    console.log(d.session_id)
+                    rv.data = rv.method.generateData(d.session_id)
+                    rv.method.drawReplyTree()
+                }
+                if (d.session_id != null) //捆绑
+                {
+                    d3.selectAll(`.sidNode_${session_id}`).attr("fill", "none")
+                    //d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0)
+                    d3.selectAll(`.sidEge_${session_id}`).attr("stroke", "none")
+                    d3.selectAll(`.detailSidEge_${session_id}`).attr("opacity", 0.7)
+                    d3.selectAll(`.detailSidNode_${session_id}`).attr("fill", d => {
+                        return d['agenda'] !== '-' ? itav.config.agendaColor[Number(dialogs[d['id']]['agenda'])] : "grey"
+                    })
+                } else //未捆绑
+                {
+                    d3.selectAll(`.sidNode_${session_id}`).attr("fill", d => {
+                        return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                    })
+                    d3.selectAll(`.sidText_${session_id}`).attr("fill", "white")
+                    //d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0.7)
+                    d3.selectAll(`.sidEge_${session_id}`).attr("stroke", d => {
+                        return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                    })
+                    d3.selectAll(`.detailSidEge_${session_id}`).attr("opacity", 0)
+                    d3.selectAll(`.detailSidNode_${session_id}`).attr("fill", "none")
+                }
+            },
+            arcTo: function (d) {
+                const x1 = itav.method.xScale((Number(dialogs[d.source].startTime) + Number(dialogs[d.source].endTime)) / 2)
+                const x2 = itav.method.xScale((Number(dialogs[d.target].startTime) + Number(dialogs[d.target].endTime)) / 2)
+                const y1 = itav.method.yScale(dialogs[d.source].role)
+                const y2 = itav.method.yScale(dialogs[d.target].role)
+                const r = Math.abs(x2 - x1) / 2;
+                return `M${x1},${y1}A${r},${r / 4} 0,0,${x1 < x2 ? 1 : 0} ${x2},${y2}`;
+            },
+            lineTo: (a, b) => {
+                const p = d3.path()
+                p.moveTo(...a)
+                p.lineTo(b[0], b[1])
+                return p.toString()
+            },
+            formatSecond: value => value + "s",
+            axisBottom: svg => svg.call(d3.axisBottom(itav.method.xScale)
+                .tickFormat(itav.method.formatSecond)
+                .tickSizeOuter(0)
+            )
+                .call(g => g.select(".domain").remove())
+                .call(g => g.attr("font-size", 25)),
+            axisRight: svg => svg.call(d3.axisRight(itav.method.yScale)
+                .tickSize(itav.config.width)   //刻度的宽度
+                .tickSizeOuter(0)
+            )
+                .call(g => g.selectAll(".tick line")
+                    .attr("stroke-opacity", 0.5)
+                    .attr("stroke-dasharray", "2,2"))
+                .call(g => g.selectAll(".tick text")
+                    .attr("x", 4)
+                    .attr("dy", -4))
+                .call(g => g.attr("font-size", 25)),
+            CubeBezierTo: d => {
+                const source = d.source
+                const target = d.target
+                const mid_y = (d.source[1] + d.target[1]) / 2
+                const v_source = [d.source[0], mid_y]
+                const v_target = [d.target[0], mid_y]
+                const p = d3.path()
+                p.moveTo(...source)
+                p.bezierCurveTo(...v_source, ...v_target, ...target)
+                return p.toString()
+            },
+            // x2: d3.scaleLinear()
+            //     .domain([0, dialogs[dialogs.length - 1].endTime + 10])
+            //     .range([0 + itav.config.padding, itav.config.width - itav.config.padding]),
+            // y2: d3.scaleLinear()
+            //     .domain(d3.extent(itav.data.accumulate_dialogs))
+            //     .range([itav.config.height2, 0]),
+            x3: d3.scaleLinear()
+                .domain([0, dialogs[dialogs.length - 1].endTime + 10])
+                .range([0 + itav.config.padding, itav.config.width - itav.config.padding]),
+            y3: d3.scaleLinear()
+                .domain(d3.extent(itav.data.overviewData.total_interact))
+                .range([itav.config.height2, 0]),
+            // area: d3.area()
+            //     .curve(d3.curveMonotoneX)
+            //     .x((d, i) => itav.method.x2(i))
+            //     .y0(itav.config.height2)
+            //     .y1(d => itav.method.y2(d)),
+            area3: d3.area()
+                .curve(d3.curveMonotoneX)
+                .x((d, i) => itav.method.x3(i * itav.config.timeSlice))
+                .y0(itav.config.height2)
+                .y1(d => itav.method.y3(d)),
+            line: d3.line()
+                .curve(d3.curveLinear)
+                .x((d, i) => itav.method.x3(i * itav.config.timeSlice))
+                .y(d => itav.method.y3(d)),
+            brushed: (function () {
+                /* 节流 */
+                let timer = null
+                const delay = 100
+                return (event) => {
+                    const { selection, type } = event
+                    if (type !== "end" && timer) return
+                    timer = setTimeout(() => {
+                        const extent = selection ? selection.map(itav.method.x3.invert) : [0, dialogs[dialogs.length - 1].endTime + 10] // 刷选为空则重置展示范围
+                        itav.method.xScale.domain(extent); //设定domain
+                        itav.data = generateInteractionViewData(dialogs, sessions)
+                        drawInteractionView()
+                        d3.select(".axisBottom")
+                            .call(itav.method.axisBottom)
+                        timer = null
+                    }, delay)
+                }
+            })(),
+            lineCurveTo: (a, b) => { // 非捆绑曲线
+                const p = d3.path()
+                p.moveTo(...a)
+                const distance = 75
+                if (a[1] < b[1])
+                    p.bezierCurveTo(a[0], a[1] + distance, b[0], b[1] - distance, ...b)
+                else
+                    p.bezierCurveTo(a[0], a[1] - distance, b[0], b[1] + distance, ...b)
+                return p.toString()
+            }
+
+        }) // assign
+
+        function generateInteractionViewData(dialogs, sessions) {
+            const overviewData = (function () {
+                const timeSlice = itav.config.timeSlice
+                const total_interact = new Array(Math.floor((Number(dialogs[dialogs.length - 1].endTime) + 10) / timeSlice) + 1).fill(0)
+                const person_interact = roles.map(v => ({
+                    role: v,
+                    interact: new Array(Math.floor((Number(dialogs[dialogs.length - 1].endTime) + 10) / timeSlice) + 1).fill(0)
+                }))
+                dialogs.forEach(v => {
+                    if (v.reply_to_id !== '-') {
+                        const index = Math.floor(Number(v.startTime) / timeSlice)
+                        total_interact[index] += 1
+                        person_interact[roles.indexOf(v.role)].interact[index] += 1
+                    }
+                })
+                return { total_interact, person_interact }
+            })()
+            //console.log('!', total_interact, person_interact)
+
+            const accumulate_dialogs = (function () {
+                const l = new Array(Math.round(Number(dialogs[dialogs.length - 1].endTime)) + 10).fill(0)
+                dialogs.forEach(v => {
+                    for (let i = Math.round(Number(v.startTime)); i <= Math.round(Number(v.endTime)); i++)
+                        l[i] += v.text.length
+                })
+                return l
+            })()
+            const edges = dialogs.map(v => ({
+                source: v.reply_to_id === '-' ? '-' : Number(v.reply_to_id),
+                target: v.id
+            }))
+
+            const locatedSession = sessions.map(d => {
+                const v = _.cloneDeep(d)
+                if (Object.keys(v['subsessions']).length > 0) {
+                    for (let key of Object.keys(v['subsessions'])) {
+                        let speakers = key.split("_")
+                        // if (speakers[0] === speakers[1]) //A_A
+                        //     continue
+                        let xsum = 0
+                        for (let x of v['subsessions'][key]) {
+                            xsum += itav.method.idx2pos(x)[0] // x 坐标系是否会更新
+                        }
+                        let l = v['subsessions'][key] // A_B 中保存的是A的节点索引
+                        let y
+                        if (itav.method.yScale(speakers[0]) < itav.method.yScale(speakers[1])) {
+                            y = itav.method.yScale(speakers[0]) + 30 //
+                        } else {
+                            y = itav.method.yScale(speakers[0]) - 30
+                        }
+                        v['subsessions'][key] = { 'pos': l, 'vp': [xsum / l.length, y] } // points , virtual point
+                    }
+                }
+                return v
+            })
+            // 计算贝塞尔中间某个点的坐标 t ~ [0,1]
+            const getBezierPointPozByParameter = function (p0, p3, t) {
+
+                // (1-t)^3P0 + 3t(t-1)^2P1 + 3t^2(1-t)P2 + t^3P3
+                const a = Math.pow((1 - t), 3)
+                const b = 3 * t * Math.pow((t - 1), 2)
+                const c = 3 * Math.pow(t, 2) * (1 - t)
+                const d = Math.pow(t, 3)
+                // p1 p2
+                const mid_y = (p0[1] + p3[1]) / 2
+                const p1 = [p0[0], mid_y]
+                const p2 = [p3[0], mid_y]
+                const x = a * p0[0] + b * p1[0] + c * p2[0] + d * p3[0]
+                const y = a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1]
+                return [x, y]
+            }
+
+            const bind_edges = (function () {
+                const edges = []
+                const squares = []
+                const idx2sessionId = {}
+                const midText = []
+                for (let session of locatedSession) {
+                    const speakers_dic = Object.create(null)
+                    if (Object.keys(session['subsessions']).length === 0) {
+                        idx2sessionId[session['single']] = session['session_id']
+                        const dialog = dialogs[Number(session['single'])]
+                        const square = {
+                            role: dialog['role'],
+                            start: itav.method.xScale(dialog['startTime']),
+                            end: itav.method.xScale(dialog['endTime']),
+                            session_id: session['session_id'],
+                            agenda: dialog['agenda']
+                        }
+                        squares.push(square)
+                        continue
+
+                    }
+                    const visited_subsession_trunk = new Set()
+                    for (let subsession_name of Object.keys(session['subsessions'])) {
+                        const speakers = subsession_name.split("_")
+                        if (speakers[0] === speakers[1]) { //A_A 无需边捆绑
+                            for (let id of session['subsessions'][subsession_name]['pos']) {
+                                //square 计算一个人在一次会话中的最早发言开始时间以及最晚发言结束时间
+                                idx2sessionId[id] = session['session_id']
+                                const x_start = itav.method.xScale(dialogs[id].startTime)
+                                const x_end = itav.method.xScale(dialogs[id].endTime)
+                                if (!(speakers[0] in speakers_dic)) {
+                                    speakers_dic[speakers[0]] = [x_start, x_end]
+                                } else if (speakers_dic[speakers[0]][0] > x_start) // x_start
+                                {
+                                    speakers_dic[speakers[0]][0] = x_start
+                                } else if (speakers_dic[speakers[0]][1] < x_end) // x_end
+                                {
+                                    speakers_dic[speakers[0]][1] = x_end
+                                }
+                            }
+                            continue
+                        }
+
+                        for (let id of session['subsessions'][subsession_name]['pos']) {
+                            // idx2sessionId
+                            idx2sessionId[id] = session['session_id']
+
+                            //edge
+                            const source = itav.method.idx2pos(id)
+                            const target = session['subsessions'][subsession_name]['vp']
+                            const weight = 1
+                            const type = "branch"
+                            const edge = { source, target, weight, type, "id": id, agenda: session['agenda'] }
+                            edges.push(edge)
+
+                            //square
+                            const x_start = itav.method.xScale(dialogs[id].startTime)
+                            const x_end = itav.method.xScale(dialogs[id].endTime)
+                            if (!(speakers[0] in speakers_dic)) {
+                                speakers_dic[speakers[0]] = [x_start, x_end]
+                            } else if (speakers_dic[speakers[0]][0] > x_start) // x_start
+                            {
+                                speakers_dic[speakers[0]][0] = x_start
+                            } else if (speakers_dic[speakers[0]][1] < x_end) // x_end
+                            {
+                                speakers_dic[speakers[0]][1] = x_end
+                            }
+                        }
+                        if (!visited_subsession_trunk.has(subsession_name)) {
+                            const another_vp = session['subsessions'][`${speakers[1]}_${speakers[0]}`]['vp']
+                            const edge = {
+                                source: session['subsessions'][subsession_name]['vp'],
+                                target: another_vp,
+                                weight: session['subsessions'][subsession_name]['pos'].length * 5,
+                                type: "trunk",
+                                id: session['session_id'] + '_' + subsession_name,
+                                agenda: session['agenda']
+                            }
+                            const midPoint = getBezierPointPozByParameter(session['subsessions'][subsession_name]['vp'], another_vp, 0.5)
+                            visited_subsession_trunk.add(subsession_name)
+                            visited_subsession_trunk.add(`${speakers[1]}_${speakers[0]}`)
+                            edges.push(edge)
+                            midText.push({
+                                x: midPoint[0],
+                                y: midPoint[1],
+                                weight: session['subsessions'][subsession_name]['pos'].length,
+                                agenda: session['agenda'],
+                                id: session['session_id']
+                            })
+                        }
+                    }
+                    // create session square
+                    for (let [key, pos] of Object.entries(speakers_dic)) {
+                        const role = key
+                        const start = pos[0]
+                        const end = pos[1]
+                        const agenda = session['agenda']
+                        const square = { role, start, end, session_id: session['session_id'], agenda }
+                        squares.push(square)
+                    }
+                }
+                return { edges, squares, idx2sessionId, midText }
+            })();
+            const circles = dialogs.map((v, i) => {
+                let c = {}
+                let start = itav.method.xScale(v.startTime)
+                let end = itav.method.xScale(v.endTime)
+                c.id = i
+                c.r = (end - start) / 2// 直径为实际发言时长
+                c.x = start + c.r //圆心在起止时间中间
+                c.y = itav.method.yScale(v.role)
+                return c
+            })
+            console.log(bind_edges)
+            return {
+                edges, bind_edges, locatedSession, circles, overviewData
+            }
+
+        }
+
+        //互动关系视图
+        var drawInteractionView = (function () {
+            const svg = d3.select(".itav svg.up")
+                .attr("viewBox", [0, 0, itav.config.width, itav.config.height])
+                .style("font", "5px sans-serif");
+            const g = svg.append("g")
+                .attr("transform", `translate(0,${itav.config.paddingTop})`)
+            //1、 添加A,B,C,D四条分割线 坐标轴 参数相当于数轴函数 
+            g.append("g")
+                .call(itav.method.axisRight)  //把g元素交给axisRight
+
+            // 2、横轴坐标
+            g.append("g")
+                .attr("class", "axisBottom")
+                .call(itav.method.axisBottom)
+            const storyBoard = g.append("g")
+                .attr("class", "storyBoard")
+            /** 概览
+             const context = svg.append("g")
+             .attr("class", "context")
+             context.append("path")
+             .datum(itav.data.accumulate_dialogs)
+             .attr("d", (d, i) => itav.method.area(d, i))
+             **/
+
+            // console.log("互动数据",itav.data.overviewData.total_interact)
+            // console.log("互动数据1",itav.data.overviewData.person_interact)
+            // 互动视图上方的折线
+            const context = svg.append("g")
+                .attr("class", "context")
+            // 上面透明度背景
+            context.append("path")
+                .datum(itav.data.overviewData.total_interact)
+                .attr("fill", "grey")
+                .attr("opacity", "0.3")
+                .attr("d", (d, i) => itav.method.area3(d, i))
+            context.selectAll(".roleGiveWordNum")
+                .data(itav.data.overviewData.person_interact)
+                .join("g")
+                .append("path")
+                .attr("stroke", d => personColor(d.role))
+                .attr("opacity", 0.8)
+                .attr("stroke-width", 4)
+                .attr("fill", "none")
+                .datum(d => d.interact)
+                .attr("d", itav.method.line)
+            context.append("g")
+                .attr("class", "x brush")
+            const brush = d3.brushX(itav.method.x3).extent([[0, 0], [itav.config.width, itav.config.height2]]).on("brush end", itav.method.brushed);
+            const brushG = context.select('g.brush');
+            brushG.call(brush);
+            const defs = g.append("defs")
+            const unbindEdge = g.append("g").attr("class", "unbindEdge")
+            const bindEdge = g.append("g").attr("class", "bindEdge")
+            const bindNodeArea = g.append("g").attr("class", "bindNodeArea")
+            //const anchor = g.append("g").attr("class", "anchor")
+            const bindEdgeTitle = g.append("g").attr("class", "bindEdgeTitle")
+            const singleNode = g.append("g").attr("class", "singleNode")
+
+            // 下方的图标
+            const svg2 = d3.select('.itav svg.down')
+            const legendRectWidth = 15
+            const xOffset = 400
+            const yOffset = 20
+            const agendaG = svg2.append("g")
+                .attr("transform", `translate(50,50)`)
+                .attr("font-size", 15)
+            agendaG.append("g").attr("class", "title")
+                .append("text")
+                .attr("stroke", "black")
+                .attr("font-weight", 1)
+                .text("Agenda Legends:")
+                .attr("transform", `translate(0,-20)`)
+            agendaG.selectAll("g").data(agendas).join("g").append("text")
+                .attr("y", (d, i) => Math.floor(i / 2) * yOffset)
+                .attr("x", (d, i) => (i % 2) * xOffset)
+                .text(d => d)
+
+            agendaG.selectAll("g")
+                .append("rect")
+                .attr("x", (d, i) => (i % 2) * xOffset - legendRectWidth - 5)
+                .attr("y", (d, i) => Math.floor(i / 2) * 20 - legendRectWidth / 1.25)
+                .attr("width", legendRectWidth)
+                .attr("height", legendRectWidth)
+                .attr("fill", (d, i) => itav.config.agendaColor[i])
+            //Filter for the outside glow,
+            let filter = g
+                .append("defs")
+                .append("filter")
+                .attr("id", "glow"),
+                feGaussianBlur = filter
+                    .append("feGaussianBlur")
+                    .attr("stdDeviation", "2.5")
+                    .attr("result", "coloredBlur"),
+                feMerge = filter.append("feMerge"),
+                feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
+                feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+            // 重新渲染部分
+            return function () {
+                /* 刷选轴 */
+                /* 未捆绑发言节点 */
+                console.log("会话", itav.data.circles)
+                // 未绑定时候的所有椭圆节点
+                const nodes = storyBoard.selectAll("ellipse")
+                    .data(itav.data.circles)
+                    .join("ellipse")
+                    .attr("class", (d, i) => `detailSidNode_${itav.data.bind_edges.idx2sessionId[i] != null ? itav.data.bind_edges.idx2sessionId[i] : 'single'}`)
+                    .attr("rx", d => d.r)
+                    .attr("ry", d => Math.min(d.r, 30))
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y)
+                    .attr("fill", "none")
+                    .on("click", itav.method.click)
+
+                // singleNode.selectAll("ellipse")
+                //     .data(itav.data.locatedSession.filter(v => {
+                //         return v.single != undefined
+                //     }).map(v => itav.data.circles[v.single]))
+                //     .join("ellipse")
+                //     .attr("class", (d, i) => `detailSidNode_${itav.data.bind_edges.idx2sessionId[i] ? itav.data.bind_edges.idx2sessionId[i] : 'single'}`)
+                //     .attr("rx", d => d.r)
+                //     .attr("ry", d => Math.min(d.r, 30))
+                //     .attr("cx", d => d.x)
+                //     .attr("cy", d => d.y)
+                //     .attr("opacity", 1)
+                //     .on('click',(e,d)=>console.log(d))
+                //     .attr("fill", d => {
+                //         return dialogs[d.id]['agenda'] !== '-' ? itav.config.agendaColor[Number(dialogs[d.id]['agenda'])] : "grey"
+                //     })
+
+
+                // 回复线渐变颜色
+
+                const linearGradients = defs
+                    .selectAll("linearGradient")
+                    .data(itav.data.edges.filter(v => v.source !== '-'))
+                    .join("linearGradient")
+                    .attr("id", (d, i) => `BuReGradient${i}`)
+                    .attr("gradientUnits", "userSpaceOnUse") //使用真实坐标定义起点终点
+                    .attr("x1", d => itav.method.idx2pos(d.source)[0])
+                    .attr("y1", d => itav.method.idx2pos(d.source)[1])
+                    .attr("x2", d => itav.method.idx2pos(d.target)[0])
+                    .attr("y2", d => itav.method.idx2pos(d.target)[1])
+                linearGradients.append("stop")
+                    .attr("offset", "0%")
+                    .attr("stop-color", d3.interpolateCividis(0))
+                // linearGradients.append("stop")
+                // .attr("offset","50%")
+                // .attr("stop-color",d3.interpolateCividis(0.5))
+                linearGradients.append("stop")
+                    .attr("offset", "100%")
+                    .attr("stop-color", d3.interpolateCividis(1))
+
+                /* 未捆绑回复线 */
+
+                unbindEdge.selectAll("path")
+                    .data(itav.data.edges.filter(v => v.source !== '-'))
+                    .join("path")
+                    .attr("d", d => {
+                        return dialogs[d.source].role !== dialogs[d.target].role ?
+                            itav.method.lineCurveTo(itav.method.idx2pos(d.source), itav.method.idx2pos(d.target)) : itav.method.arcTo(d)
+                    }
+                    )
+                    //.attr("stroke", (d, i) => `url(#BuReGradient${i})`)
+                    .attr("stroke", d => itav.config.agendaColor[Number(dialogs[d.source]['agenda'])])
+                    .attr("opacity", 0)
+                    .attr("stroke-width", "3")
+                    .attr("stroke-linecap", "round")
+                    .attr("fill", "none")
+                    .attr("class", d => {
+                        return `detailSidEge_${itav.data.bind_edges.idx2sessionId[d.source] != null ? itav.data.bind_edges.idx2sessionId[d.source] : 'single'}`
+                    })
+
+
+                /* 捆绑回复线 */
+                bindEdge
+                    .selectAll("path")
+                    .data(itav.data.bind_edges.edges)
+                    .join("path")
+                    .attr("d", d => itav.method.CubeBezierTo(d))
+                    .attr("stroke", d => {
+                        return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                    })//(d, i) => d3.color((d3.interpolateSpectral(Math.random(i)))).darker())
+                    .attr("fill", "none")
+                    .attr("stroke-width", d => d.type === "trunk" ? 4 : 1)
+                    .attr("opacity", "0.7")
+                    .attr("class", d => {
+                        if (d.type === "trunk")
+                            return `sidEge_${d.id.split("_")[0]}`
+                        else
+                            return `sidEge_${itav.data.bind_edges.idx2sessionId[d.id]}`
+                    })
+                bindEdgeTitle.selectAll("circle")
+                    .data(itav.data.bind_edges.midText)
+                    .join("circle")
+                    .attr("class", d => `sidNode_${d["id"]}`)
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y)
+                    .attr("r", 12)
+                    .attr("opacity", 1)
+                    .attr("fill", d => {
+                        return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                    })
+
+                bindEdgeTitle.selectAll("text")
+                    .data(itav.data.bind_edges.midText)
+                    .join("text")
+                    .attr("class", d => `sidNode_${d["id"]} sidText_${d["id"]}`)
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y)
+                    .attr("dy", 7)
+                    .attr("text-anchor", "middle")
+                    .attr("font-size", 20)
+                    .attr("opacity", 1)
+                    .attr("fill", "white")
+                    // .attr("stroke","white")
+                    .text(d => d.weight)
+
+                /* 捆绑子会话发言节点 */
+
+                bindNodeArea
+                    .selectAll("rect")
+                    .data(itav.data.bind_edges.squares)
+                    .join("rect")
+                    .attr("x", d => d['start'])
+                    .attr("y", d => itav.method.yScale(d['role']) - 10)
+                    .attr("height", 20)
+                    .attr("width", d => d['end'] - d['start'])
+                    .attr("opacity", "0.7")
+                    .attr("rx", 10)
+                    .attr("ry", 10)
+                    .attr("fill", d => {
+                        return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                    })
+                    .attr("class", d => `sidNode_${d["session_id"]}`)
+                    .on("click", itav.method.click)
+
+                // region edges2
+                // g.append("g")
+                //                .selectAll("path")
+                //            .data(itav.data.bind_edges2.outlineStringList)
+                //            .join("path")
+                //            .attr("d",d=>d.path)
+                //                .attr("stroke","white")
+                //                .attr("stroke-width",1.5)
+                //                .attr("filter","url(#glow)")
+                //            .attr("fill","none")
+
+
+                //  bindNodeArea
+                //     .selectAll("rect")
+                //     .data(itav.data.bind_edges2.squares)
+                //     .join("rect")
+                //     .attr("x", d => d['start'])
+                //     .attr("y", d => itav.method.yScale(d['role']) - d['height'] / 2)
+                //     .attr("height", d => d['height'])
+                //     .attr("width", d => d['end'] - d['start'])
+                //      .attr("filter","url(#glow)")
+                //     // .attr("fill-opacity", 0.8)
+                //     // .attr("rx", 10)
+                //     // .attr("ry", 10)
+                //     .attr("fill", d => {
+                //         return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                //     })
+                //     .attr("class", d => `sidNode_${d["session_id"]}`)
+                //     .on("click", itav.method.click)
+                // const area = bindNodeArea.selectAll("g")
+                //     .data(itav.data.bind_edges2.pathStringList)
+                //     .join("g")
+                // area.selectAll("*").remove()
+                // area.append("path")
+                //     .attr("d", d => d.path)
+                //     .attr("filter", "url(#glow)")
+                //     .attr("fill", d => {
+                //         return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                //     })
+                //
+                // area.append("path")
+                //     .attr("d", (d,i) => itav.data.bind_edges2.outlineStringList[i].path)
+                //     .attr("stroke", "white")
+                //     .attr("stroke-width", 1)
+                //     // .attr("filter", "url(#glow)")
+                //     .attr("fill", "none")
+
+                //endregion
+                // anchor.selectAll("circle")
+                // .data(itav.data.bind_edges2.nodes)
+                // .join("circle")
+                // .attr("cx",d=>d.x)
+                // .attr("cy",d=>d.y)
+                // .attr("r",2)
+                // .attr("fill","red")
+            }
+
+
+        })()
+        drawInteractionView()
+        // endregion
+        // region pav(personal ability view)
+        const pav = {}
+        pav.config = {
+            focusRadar: {
+                w: document.querySelectorAll(".focused")[0].offsetWidth / 4, //Width of the circle
+                h: document.querySelectorAll(".focused")[0].offsetHeight, //Height of the circle
+                margin: { top: 10, right: 15, bottom: 10, left: 15 }, //The margins of the SVG
+                levels: 6, //How many levels or inner circles should there be drawn
+                maxValue: 0.6, //What is the value that the biggest circle will represent
+                labelFactor: 1.1, //How much farther than the radius of the outer circle should the labels be placed
+                wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
+                opacityArea: 0.35, //The opacity of the area of the blob
+                dotRadius: 4, //The size of the colored circles of each blog
+                opacityCircles: 0.1, //The opacity of the circles of each blob
+                strokeWidth: 2, //The width of the stroke around each blob
+                roundStrokes: true, //If true the area and stroke will follow a round path (cardinal-closed)
+                color: d3.scaleOrdinal(d3.schemeCategory10), //Color function
+                toolbar: true,
+                roleNameFontSize: 20,
+                roleNameYOffset: 80
+            },
+            defocusRadar: {
+                w: document.querySelectorAll(".defocus .defocus_item1")[0].offsetWidth, //Width of the circle
+                h: document.querySelectorAll(".defocus .defocus_item1")[0].offsetHeight, //Height of the circle
+                margin: { top: 0, right: 0, bottom: 0, left: 0 }, //The margins of the SVG
+                levels: 6, //How many levels or inner circles should there be drawn
+                maxValue: 0.6, //What is the value that the biggest circle will represent
+                labelFactor: 1, //How much farther than the radius of the outer circle should the labels be placed
+                wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
+                opacityArea: 0.35, //The opacity of the area of the blob
+                dotRadius: 3, //The size of the colored circles of each blog
+                opacityCircles: 0.1, //The opacity of the circles of each blob
+                strokeWidth: 2, //The width of the stroke around each blob
+                roundStrokes: true, //If true the area and stroke will follow a round path (cardinal-closed)
+                color: d3.scaleOrdinal(d3.schemeCategory10) //Color function
+            },
+            activityView: {
+                w: document.querySelectorAll(".focused")[0].offsetWidth * 3 / 4, //Width of the circle
+                h: document.querySelectorAll(".focused")[0].offsetHeight, //Height of the circle
+                margin: { top: 20, right: 20, bottom: 20, left: 50 }, // The margins of the SVG
+                strokeLinecap: "round", // stroke line cap of the line
+                strokeLinejoin: "round", // stroke color of line
+                strokeWidth: 1.5, // stroke width of line, in pixels
+                strokeOpacity: 1, // stroke opacity of line
+                color: "steelblue" //stroke color of line
+            }
+        }
+        pav.method = {
+            formatSeconds: function (value) {
+                let result = Number(value)
+                let h = Math.floor(result / 3600) < 10 ? '0' + Math.floor(result / 3600) : Math.floor(result / 3600);
+                let m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60));
+                let s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));
+
+                let res = '';
+                if (h !== '00') res += `${h}:`;
+                if (m !== '00') res += `${m}:`;
+                res += `${s}`;
+                return res;
+            }
+        }
+        pav.method.generatePersonalAbilityViewData = function (focusRole) {
+            // 生成雷达图所需数据
+            const focusRadarData = []
+            const temp = []
+            for (let [key, value] of Object.entries(personal_ability.find(v => v['role'] === focusRole))) {
+                if (key !== 'role')
+                    temp.push({ 'axis': key, 'value': value })
+            }
+            focusRadarData.push(temp)
+            const defocusRoleList = []
+            const defocusRadarDataList = personal_ability.filter(v => v.role !== focusRole).map(v => {
+                defocusRoleList.push(v.role)
+                const DefocusData = []
+                const temp = []
+                for (let [key, value] of Object.entries(v)) {
+                    if (key !== 'role')
+                        temp.push({ 'axis': key, 'value': value })
+                }
+                DefocusData.push(temp)
+                return DefocusData
+            })
+            // 生成绘制活跃度视图所需数据
+            const focusRoleActivityData = {}
+            const timeSlice = 30 // second
+            const focusRoleActivityTrend = []
+            let words = 0
+            let curTime = timeSlice
+            for (let i = 0; i < dialogs.length; i++) {
+                while (dialogs[i].startTime >= curTime) {
+                    focusRoleActivityTrend.push({ 'time': curTime - timeSlice / 2, 'value': words })
+                    curTime += timeSlice
+                    words = 0
+                }
+                if (dialogs[i].role === focusRole) {
+                    words += dialogs[i].text.split(" ").length
+                }
+            }
+            focusRoleActivityTrend.push({ 'time': curTime - timeSlice / 2, '': words })
+            const endTime = Math.floor(dialogs[dialogs.length - 1].endTime)
+            focusRoleActivityData['trends'] = focusRoleActivityTrend
+            focusRoleActivityData['headPos'] = headPos[focusRole].slice(0, endTime)
+            // 生成绘制弦图所需数据
+            const focusRoleChordData = new Array(roles.length).fill(0).map(v => new Array(roles.length).fill(0))
+            for (let role in chordData) {
+                const i = roles.indexOf(role)
+                for (let innerRole in chordData[role]) {
+                    const j = roles.indexOf(innerRole)
+                    focusRoleChordData[i][j] = chordData[role][innerRole]
+                }
+            }
+            const focusRoleKeyFrame = keyframes[focusRole].filter(v => v.frame / 25 <= endTime)
+            focusRoleActivityData['keyframe'] = focusRoleKeyFrame
+            document.querySelector('.video video').setAttribute("src", `../static/data/video/${meetingName}/${focusRole}.mp4`)
+            document.querySelector('.video video').pause()
+            return {
+                focusRole,
+                focusRadarData,
+                defocusRadarDataList,
+                focusRoleActivityData,
+                defocusRoleList,
+                focusRoleChordData
+            }
+        }
+        pav.data = pav.method.generatePersonalAbilityViewData(roles[0])
+        pav.data.detailView = "Contribution" // default
+        pav.method.changePerson = function (role) {
+            pav.data = pav.method.generatePersonalAbilityViewData(role)
+            pav.method.drawPersonalAbilityView()
+            const opt = document.querySelectorAll('.pav-studentSelector option')
+            opt.forEach(option => {
+                if (option.value === role)
+                    option.selected = true
+            })
+        }
+        pav.method.drawRadarView = function (data, Role, options, selector) {
+
+            /////////////////////////////////////////////////////////
+            /////////////////// Helper Function /////////////////////
+            /////////////////////////////////////////////////////////
+
+            //Taken from http://bl.ocks.org/mbostock/7555321
+            //Wraps SVG text
+            function wrap(text, width) {
+                text.each(function () {
+                    let text = d3.select(this),
+                        words = text
+                            .text()
+                            .split(/\s+/)
+                            .reverse(),
+                        word,
+                        line = [],
+                        lineNumber = 0,
+                        lineHeight = 1.4, // ems
+                        y = text.attr("y"),
+                        x = text.attr("x"),
+                        dy = parseFloat(text.attr("dy")),
+                        tspan = text
+                            .text(null)
+                            .append("tspan")
+                            .attr("x", x)
+                            .attr("y", y)
+                            .attr("dy", dy + "em");
+
+                    while ((word = words.pop())) {
+                        line.push(word);
+                        tspan.text(line.join(" "));
+                        if (tspan.node().getComputedTextLength() > width) {
+                            line.pop();
+                            tspan.text(line.join(" "));
+                            line = [word];
+                            tspan = text
+                                .append("tspan")
+                                .attr("x", x)
+                                .attr("y", y)
+                                .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                                .text(word);
+                        }
+                    }
+                });
+            } // wrap
+
+            let cfg = {
+                w: 600, //Width of the circle
+                h: 600, //Height of the circle
+                margin: { top: 10, right: 10, bottom: 10, left: 10 }, //The margins of the SVG
+                levels: 3, //How many levels or inner circles should there be drawn
+                maxValue: 0, //What is the value that the biggest circle will represent
+                labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
+                wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
+                opacityArea: 0.35, //The opacity of the area of the blob
+                dotRadius: 4, //The size of the colored circles of each blog
+                opacityCircles: 0.1, //The opacity of the circles of each blob
+                strokeWidth: 2, //The width of the stroke around each blob
+                roundStrokes: false, //If true the area and stroke will follow a round path (cardinal-closed)
+                color: d3.scaleOrdinal(d3.schemeCategory10), //Color function,
+                toolbar: false,// The toolbar upon radar
+                roleNameFontSize: 10,
+                roleNameYOffset: 10
+            };
+
+            //Put all of the options into a variable called cfg
+            if ("undefined" !== typeof options) {
+                for (var i in options) {
+                    if ("undefined" !== typeof options[i]) {
+                        cfg[i] = options[i];
+                    }
+                } //for i
+            } //if
+
+            //If the supplied maxValue is smaller than the actual one, replace by the max in the data
+            let maxValue = Math.max(
+                cfg.maxValue,
+                d3.max(data, function (i) {
+                    return d3.max(
+                        i.map(function (o) {
+                            return o.value;
+                        })
+                    );
+                })
+            );
+
+
+            const allAxis = data[0].map(function (i, j) {
+                return i.axis;
+            }), //Names of each axis
+                total = allAxis.length, //The number of different axes
+                radius = Math.min(cfg.w / 2, cfg.h / 2), //Radius of the outermost circle
+                Format = d3.format(".2%"), //Percentage formatting
+                angleSlice = (Math.PI * 2) / total, //The width in radians of each "slice"
+                angleOffset = angleSlice / 2;
+            //Scale for the radius
+            const rScale = d3
+                .scaleLinear()
+                .range([0, radius])
+                .domain([0, maxValue]);
+
+            /////////////////////////////////////////////////////////
+            //////////// Create the container SVG and g /////////////
+            /////////////////////////////////////////////////////////
+
+            //Calculate width and height
+            let height = cfg.h + cfg.margin.top + cfg.margin.bottom;
+            let width = cfg.w + cfg.margin.left + cfg.margin.right;
+            //Initiate the radar chart SVG
+            let svg = d3
+                .select(selector)
+                .attr("width", width)
+                .attr("height", height)
+            svg.selectAll("*").remove()
+            // Append event listener
+            svg.on('click', () => {
+                if (pav.data.focusRole !== Role) {
+                    pav.method.changePerson(Role)
+                }
+            })
+            svg.append("text")
+                .text(Role)
+                .attr("font-size", cfg.roleNameFontSize)
+                .attr("y", cfg.roleNameYOffset)
+                .attr("x", 2)
+
+            let g = svg
+                .append("g")
+                .attr(
+                    "transform",
+                    "translate(" +
+                    (cfg.w / 2 + cfg.margin.left) +
+                    "," +
+                    (cfg.h / 2 + cfg.margin.top) +
+                    ")"
+                );
+            // region filter
+            /////////////////////////////////////////////////////////
+            ////////// Glow filter for some extra pizzazz ///////////
+            /////////////////////////////////////////////////////////
+
+            //Filter for the outside glow
+            let filter = g
+                .append("defs")
+                .append("filter")
+                .attr("id", "glow"),
+                feGaussianBlur = filter
+                    .append("feGaussianBlur")
+                    .attr("stdDeviation", "2.5")
+                    .attr("result", "coloredBlur"),
+                feMerge = filter.append("feMerge"),
+                feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
+                feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+            // endregion
+            /////////////////////////////////////////////////////////
+            /////////////// Draw the Circular grid //////////////////
+            /////////////////////////////////////////////////////////
+
+            //Wrapper for the grid & axes
+            // region axis
+            let axisGrid = g.append("g").attr("class", "axisWrapper");
+
+            //Draw the background circles
+            axisGrid
+                .selectAll(".levels")
+                .data(d3.range(1, cfg.levels + 1).reverse())
+                .enter()
+                .append("circle")
+                .attr("class", "gridCircle")
+                .attr("r", function (d, i) {
+                    return (radius / cfg.levels) * d;
+                })
+                .style("fill", "#CDCDCD")
+                .style("stroke", "#CDCDCD")
+                .style("fill-opacity", cfg.opacityCircles)
+                .style("filter", "url(#glow)");
+
+            //Text indicating at what % each level is
+            axisGrid
+                .selectAll(".axisLabel")
+                .data(d3.range(1, cfg.levels + 1).reverse())
+                .enter()
+                .append("text")
+                .attr("class", "axisLabel")
+                .attr("x", 4)
+                .attr("y", function (d) {
+                    return (-d * radius) / cfg.levels;
+                })
+                .attr("dy", "0.4em")
+                .style("font-size", cfg.w / 25)
+                .attr("fill", "#737373")
+                .text(function (d, i) {
+                    return Format((maxValue * d) / cfg.levels);
+                });
+
+            /////////////////////////////////////////////////////////
+            //////////////////// Draw the axes //////////////////////
+            /////////////////////////////////////////////////////////
+            //Create the straight lines radiating outward from the center
+            let axis = axisGrid
+                .selectAll(".axis")
+                .data(allAxis)
+                .enter()
+                .append("g")
+                .attr("class", "axis");
+
+            //Append the lines
+            axis
+                .append("line")
+                .attr("x1", 0)
+                .attr("y1", 0)
+                .attr("x2", function (d, i) {
+                    return rScale(maxValue * 1.1) * Math.cos(angleSlice * i - Math.PI / 2 + angleOffset);
+                })
+                .attr("y2", function (d, i) {
+                    return rScale(maxValue * 1.1) * Math.sin(angleSlice * i - Math.PI / 2 + angleOffset);
+                })
+                .attr("class", "line")
+                .style("stroke", "white")
+                .style("stroke-width", "2px");
+
+            //Append the labels at each axis
+            axis
+                .append("text")
+                .attr("class", "legend")
+                .attr("font-family", "Verdana")
+                .style("font-size", cfg.w / 20)
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.35em")
+                .attr("x", function (d, i) {
+                    return (
+                        rScale(maxValue * cfg.labelFactor) *
+                        Math.cos(angleSlice * i - Math.PI / 2 + angleOffset)
+                    );
+                })
+                .attr("y", function (d, i) {
+                    return (
+                        rScale(maxValue * cfg.labelFactor) *
+                        Math.sin(angleSlice * i - Math.PI / 2 + angleOffset)
+                    );
+                })
+                .text(function (d) {
+                    return d;
+                })
+                .call(wrap, cfg.wrapWidth);
+            //endregion
+            /////////////////////////////////////////////////////////
+            ///////////// Draw the radar chart blobs ////////////////
+            /////////////////////////////////////////////////////////
+
+            //The radial line function
+            let radarLine = d3
+                .lineRadial()
+                .curve(d3.curveLinearClosed)
+                .radius(function (d) {
+
+                    return rScale(d.value);
+                })
+                .angle(function (d, i) {
+
+                    return i * angleSlice + angleOffset;
+                });
+
+            if (cfg.roundStrokes) {
+                radarLine.curve(d3.curveCardinalClosed);
+            }
+
+            //Create a wrapper for the blobs
+            // region radarWrapper
+            let blobWrapper = g
+                .selectAll(".radarWrapper")
+                .data(data)
+                .enter()
+                .append("g")
+                .attr("class", "radarWrapper");
+            //endregion
+            //Append the backgrounds
+            // region radarArea
+            blobWrapper
+                .append("path")
+                .attr("class", "radarArea")
+                .attr("d", function (d, i) {
+                    return radarLine(d);
+                })
+                .style("fill", function (d, i) {
+                    return cfg.color(i);
+                })
+                .style("fill-opacity", cfg.opacityArea)
+                .on("mouseover", function () {
+                    //Dim all blobs
+                    d3.selectAll(".radarArea")
+                        .transition()
+                        .duration(200)
+                        .style("fill-opacity", 0.1);
+                    //Bring back the hovered over blob
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .style("fill-opacity", 0.7);
+                })
+                .on("mouseout", function () {
+                    //Bring back all blobs
+                    d3.selectAll(".radarArea")
+                        .transition()
+                        .duration(200)
+                        .style("fill-opacity", cfg.opacityArea);
+                });
+            //endregion
+            //Create the outlines
+            // region radarStroke
+            blobWrapper
+                .append("path")
+                .attr("class", "radarStroke")
+                .attr("d", function (d, i) {
+                    return radarLine(d);
+                })
+                .style("stroke-width", cfg.strokeWidth + "px")
+                .style("stroke", function (d, i) {
+                    return cfg.color(i);
+                })
+                .style("fill", "none")
+                .style("filter", "url(#glow)");
+            // endregion
+            //Append the circles
+            // region radarCircle
+            blobWrapper
+                .selectAll(".radarCircle")
+                .data(function (d, i) {
+                    return d;
+                })
+                .enter()
+                .append("circle")
+                .attr("class", "radarCircle")
+                .attr("r", cfg.dotRadius)
+                .attr("cx", function (d, i) {
+                    return rScale(d.value) * Math.cos(angleSlice * i - Math.PI / 2 + angleOffset);
+                })
+                .attr("cy", function (d, i) {
+                    return rScale(d.value) * Math.sin(angleSlice * i - Math.PI / 2 + angleOffset);
+                })
+                .style("fill", function (d) {
+                    return "#737373";
+                })
+                .style("fill-opacity", 0.8);
+            //endregion
+            /////////////////////////////////////////////////////////
+            //////// Append invisible circles for tooltip ///////////
+            /////////////////////////////////////////////////////////
+
+            //Wrapper for the invisible circles on top
+            let tooltip = g
+                .append("text")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+            let blobCircleWrapper = g
+                .selectAll(".radarCircleWrapper")
+                .data(data)
+                .enter()
+                .append("g")
+                .attr("class", "radarCircleWrapper");
+
+            //Append a set of invisible circles on top for the mouseover pop-up
+            blobCircleWrapper
+                .selectAll(".radarInvisibleCircle")
+                .data(function (d, i) {
+                    return d;
+                })
+                .enter()
+                .append("circle")
+                .attr("class", "radarInvisibleCircle")
+                .attr("r", cfg.dotRadius * 1.5)
+                .attr("cx", function (d, i) {
+                    return rScale(d.value) * Math.cos(angleSlice * i - Math.PI / 2 + angleOffset);
+                })
+                .attr("cy", function (d, i) {
+                    return rScale(d.value) * Math.sin(angleSlice * i - Math.PI / 2 + angleOffset);
+                })
+                .style("fill", "none")
+                .style("pointer-events", "all")
+                .on("mouseover", function (event, d) {
+                    let newX = parseFloat(d3.select(this).attr("cx")) - 10;
+                    let newY = parseFloat(d3.select(this).attr("cy")) - 10;
+                    tooltip
+                        .attr("x", newX)
+                        .attr("y", newY)
+                        .text(Format(d.value))
+                        .transition()
+                        .duration(200)
+                        .style("opacity", 1);
+                })
+                .on("mouseout", function () {
+                    tooltip
+                        .transition()
+                        .duration(200)
+                        .style("opacity", 0);
+                });
+
+            //Set up the small tooltip for when you hover over a circle
+
+        } //RadarChart
+        pav.method.drawDetailView = function () {
+            const value = document.querySelector(".pav-abilitySelector").value
+            if (value === "Contribution" || value === "Leadership" || value === "Perplexity")
+                drawPersonalFocusCloud(keywordsOfPersonal[pav.data.focusRole][value], pav.config.activityView)
+            else if (value === "Activity")
+                drawPersonalFocusActivityTrend(pav.data.focusRoleActivityData, pav.config.activityView)
+            else if (value === "Backchannel")
+                drawPersonalFocusChordView(pav.data.focusRoleChordData, pav.config.activityView)
+
+            function drawPersonalFocusActivityTrend({ trends, headPos, keyframe }, cfg) {
+                const trendHeight = cfg.h / 3
+                // Compute default domains.
+                const xDomain = [0, Math.floor(dialogs[dialogs.length - 1].endTime)]
+                const yDomain = [0, d3.max(trends, d => d.value)];
+
+                // Construct scales and axes.
+                const xScale = d3.scaleLinear(xDomain, [cfg.margin.left, cfg.w - cfg.margin.right]);
+                const yScale = d3.scaleLinear(yDomain, [trendHeight - cfg.margin.bottom, cfg.margin.top]);
+                const xAxis = d3.axisBottom(xScale).ticks(cfg.w / 80).tickFormat(d => d + 's').tickSizeOuter(0);
+                const yAxis = d3.axisLeft(yScale).ticks(trendHeight / 40);
+                const barWidth = (cfg.w - cfg.margin.left - cfg.margin.right) / headPos.length
+                const barHeight = 15
+                const yScale_headPos = d3.scaleOrdinal()
+                    .range(['#1f77b4', '#d11a2d', '#fecc11'])
+                    .domain(['up', 'down', 'miss'])
+
+                // Construct a line generator.
+                const line = d3.line()
+                    .curve(d3.curveStep)
+                    .x(d => xScale(d.time))
+                    .y(d => yScale(d.value));
+
+                const svg = d3.select(".focused .focusDetail")
+                    .attr("width", cfg.w)
+                    .attr("height", cfg.h)
+                    .attr("viewBox", [0, 0, cfg.w, cfg.h])
+                    .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+                svg.selectAll("*").remove() // 移除残留的元素
+
+                let filter = svg
+                    .append("defs")
+                    .append("filter")
+                    .attr("id", "glow"),
+                    feGaussianBlur = filter
+                        .append("feGaussianBlur")
+                        .attr("stdDeviation", "2.5")
+                        .attr("result", "coloredBlur"),
+                    feMerge = filter.append("feMerge"),
+                    feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
+                    feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+                const lineChart = svg.append("g")
+                    .attr("transform", `translate(0,${cfg.margin.top})`)
+                //.attr("transform", `translate(0,${cfg.h / 3 - cfg.margin.bottom})`)
+
+                lineChart.append("g")
+                    .attr("opacity", "0.8")
+                    .attr("transform", `translate(0,${trendHeight - cfg.margin.bottom})`)
+                    .call(xAxis);
+
+                lineChart.append("g")
+                    .attr("transform", `translate(${cfg.margin.left},0)`)
+                    .attr("opacity", "0.8")
+                    .call(yAxis)
+                    .call(g => g.select(".domain").remove())
+                    .call(g => g.selectAll(".tick line").clone()
+                        .attr("x2", cfg.w - cfg.margin.left - cfg.margin.right)
+                        .attr("stroke-opacity", 0.1))
+                    .call(g => g.append("text")
+                        .attr("x", -30)
+                        .attr("y", 10)
+                        .attr("fill", "currentColor")
+                        .attr("text-anchor", "start")
+                        .text("Words"));
+
+                lineChart.append("path")
+                    .attr("fill", "none")
+                    .attr("stroke", cfg.color)
+                    .attr("stroke-width", cfg.strokeWidth)
+                    .attr("stroke-linecap", cfg.strokeLinecap)
+                    .attr("stroke-linejoin", cfg.strokeLinejoin)
+                    .attr("stroke-opacity", cfg.strokeOpacity)
+                    .attr("d", line(trends))
+                    .attr("filter", "url(#glow)")
+                const barchart = svg.append("g")
+                    .attr("transform", `translate(0,${trendHeight + cfg.margin.top})`)
+                const legend = svg.append("g")
+                    .attr("transform", `translate(0,${trendHeight + cfg.margin.top / 2})`)
+                legend.selectAll("rect")
+                    .data(['up', 'down', 'miss'])
+                    .join("rect")
+                    .attr("x", (d, i) => i * 100 + 80)
+                    .attr("y", cfg.margin.top)
+                    .attr("height", barHeight)
+                    .attr("width", barHeight * 2)
+                    .attr("fill", d => yScale_headPos(d))
+                    .attr("opacity", 0.8)
+                legend.selectAll("text")
+                    .data(['up', 'down', 'miss'])
+                    .join("text")
+                    .attr("x", (d, i) => i * 100 + 80 - barHeight * 2)
+                    .attr("y", cfg.margin.top + barHeight * 3 / 4)
+                    .text(d => d)
+                    .attr("font-size", 12)
+                barchart.selectAll("rect")
+                    .data(headPos)
+                    .join("rect")
+                    .style("cursor", "pointer")
+                    .on("mouseover", (ev) => d3.select(ev.currentTarget).attr("fill", "black"))
+                    .on("mouseleave", (ev, d) => d3.select(ev.currentTarget).attr("fill", yScale_headPos(d.facePos)))
+                    .on("click", (ev, d, i) => {
+                        const video = document.querySelector(".video video")
+                        // video.play()
+                        video.currentTime = Number(d.time)
+                        //document.querySelector(".video video").setAttribute("currentTime",d.time)
+                    })
+                    .attr("x", d => xScale(d.time))
+                    .attr("y", cfg.margin.top * 2)
+                    // .attr("stroke-width",0.2)
+                    // .attr("stroke","#fff")
+                    .attr("height", barHeight)
+                    .attr("width", barWidth)
+                    .attr("fill", d => yScale_headPos(d.facePos))
+                barchart.selectAll("image")
+                    .data(keyframe)
+                    .join("image")
+                    .attr("x", d => xScale(d.frame / 25) - 35)
+                    .attr("y", (d, i) => (i % 3 + 1) * cfg.margin.top * 3)
+                    .attr("height", 70)
+                    .attr("width", 70)
+                    .attr("xlink:href", d => d.img)
+                    .attr("class", "keyframe")
+                    .on("mouseover", (e, d) => {
+                        barchart.selectAll(".line").attr("opacity", 0.1)
+                        barchart.selectAll(".keyframe").attr("opacity", 0.1)
+                        d3.select(e.currentTarget).attr("opacity", 1)
+                        d3.selectAll(`.l${d.frame}`).attr("opacity", 1)
+                    })
+                    .on("mouseleave", (e) => {
+                        barchart.selectAll(".keyframe").attr("opacity", 1)
+                        barchart.selectAll(".line").attr("opacity", 1)
+                    })
+                barchart.selectAll('line')
+                    .data(keyframe)
+                    .join('line')
+                    .attr("class", d => `line l${d.frame}`)
+                    .attr("x1", d => xScale(d.frame / 25))
+                    .attr("y1", d => cfg.margin.top * 2 + barHeight)
+                    .attr("x2", d => xScale(d.frame / 25))
+                    .attr("y2", (d, i) => (i % 3 + 1) * cfg.margin.top * 3 + 5)
+                    .attr("stroke", "grey")
+
+            }
+
+            function drawPersonalFocusCloud(data, cfg) {
+                console.log("词云", data)
+                const trendHeight = cfg.h / 3
+                const fontFamilies = ['Open Sans', 'Pacifico', 'impact']
+                const fonts = d3.scaleLinear()
+                    .domain([1, d3.max(data.map(d => d.cnt))])
+                    .range([0, 2]);
+                const s = d3.scaleSqrt()
+                    .domain([1, d3.max(data.map(d => d.cnt))])
+                    .range([10, 30]);
+                const wordColors = d3.scaleOrdinal()
+                    .domain(agendas.map((v, i) => i))
+                    .range(d3.schemeSet2)
+                    .unknown('black')
+                const sentenceFontSize = 16
+                // Compute default domains.
+                // Construct a line generator.
+                const svg = d3.select(".focused .focusDetail")
+                    .attr("width", cfg.w)
+                    .attr("height", cfg.h)
+                    .attr("viewBox", [0, 0, cfg.w, cfg.h])
+                    .attr("text-anchor", "middle")
+                    .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+                svg.selectAll("*").remove() // 移除残留的元素s
+                const sentence = svg.append("g")
+                    .attr("transform", `translate(${cfg.margin.left},${cfg.h / 3})`)
+
+                const layout = d3.layout.cloud()
+                    .size([cfg.w, cfg.h / 3])
+                    .words(data)
+                    .padding(0)
+                    .rotate(() => 0)
+                    .font(d => fontFamilies[fonts(d.cnt)])
+                    .fontSize(d => s(d.cnt))
+                    .on("word", ({ size, x, y, rotate, word, cnt, sentences, agenda }) => {
+                        sentences = [...new Set(sentences)]
+                        const texttext = svg.append("text")
+                            .attr("font-size", size)
+                            .attr("transform", `translate(${x},${y}) rotate(${rotate})`)
+                            .text(word)
+                            .style('fill', wordColors(agenda))
+                            .classed("click-only-text", true)
+                            .classed("word-default", true)
+                            .on("mouseover", handleMouseOver)
+                            .on("mouseout", handleMouseOut)
+                            .on("click", handleClick);
+
+                        texttext.append("title").text(agenda);
+
+                        function handleMouseOver(d) {
+                            d3.select(this)
+                                .classed("word-hovered", true)
+                                .transition(`mouseover-${word}`).duration(200).ease(d3.easeLinear)
+                                .attr("font-size", size + 2)
+                                .attr("font-weight", "bold");
+                        }
+
+                        function handleMouseOut(d) {
+                            d3.select(this)
+                                .classed("word-hovered", false)
+                                .interrupt(`mouseover-${word}`)
+                                .attr("font-size", size)
+                                .attr("font-weight", "none")
+                        }
+
+                        function handleClick(event) {
+                            sentence.selectAll("*").remove()
+                            sentence.append("foreignObject")
+                                .attr("width", cfg.w - cfg.margin.right - cfg.margin.left)
+                                .attr("height", cfg.h * 2 / 3 - cfg.margin.top)
+                                .style("overflow", "scroll")
+                                .style("overflow-x", "hidden")
+                                .attr("font-size", sentenceFontSize)
+                                .attr("font-family", 'Verdana')
+                                .selectAll("p")
+                                .data(sentences)
+                                .join("xhtml:p")
+                                .attr("style", "margin-bottom:10px")
+                                .selectAll("span")
+                                .data(d => {
+                                    const outPut = []
+                                    outPut.push(pav.method.formatSeconds(dialogs[d].startTime) + ": ")
+                                    d = dialogs[d].text
+                                    const wl = word.length
+                                    const indexs = []
+                                    const w = word.toLowerCase()
+                                    d = d.toLowerCase()
+                                    let start = 0
+                                    let i = d.indexOf(w, start)
+                                    while (i !== -1) {
+                                        indexs.push(i)
+                                        start = i + wl
+                                        i = d.indexOf(w, start)
+                                    }
+                                    let pre = 0
+                                    for (let i of indexs) {
+                                        if (i !== pre) {
+                                            outPut.push(d.slice(pre, i))
+                                        }
+                                        pre = i + wl
+                                        outPut.push(d.slice(i, pre))
+                                    }
+                                    outPut.push(d.slice(pre))
+                                    return outPut
+                                })
+                                .join("span")
+                                .text(d => d)
+                                .attr("style", d => `color:${d.toLowerCase() === word.toLowerCase() ? wordColors(agenda) : "none"}`)
+
+
+                        }
+                    });
+                layout.start();
+            }
+
+            function drawPersonalFocusChordView(data, cfg) {
+                const w = cfg.w * 3 / 4
+                const h = cfg.h * 3 / 4
+                const outerRadius = Math.min(w, h) * 0.5 - 30
+                const innerRadius = outerRadius - 20
+                const activityColor = d3.schemeCategory10[0]
+                const chord = d3.chord()
+                    .padAngle(0.05)
+                    .sortSubgroups(d3.descending)
+                const arc = d3.arc()
+                    .innerRadius(innerRadius)
+                    .outerRadius(outerRadius)
+                const ribbon = d3.ribbon()
+                    .radius(innerRadius)
+                const groupTicks = function (d, step) {
+                    const k = (d.endAngle - d.startAngle) / d.value;
+                    return d3.range(0, d.value, step).map(value => {
+                        return { value: value, angle: value * k + d.startAngle };
+                    });
+                }
+
+                const svg = d3.select(".focused .focusDetail")
+                    .attr("width", w)
+                    .attr("height", h)
+                    .style("margin-left", cfg.margin.left)
+                    .attr("viewBox", [-w / 2, -h / 2, w, h])
+                    .attr("font-size", 10)
+                    .attr("font-family", "sans-serif");
+                svg.selectAll("*").remove() // 移除残留的元素s
+                let filter = svg
+                    .append("defs")
+                    .append("filter")
+                    .attr("id", "glow"),
+                    feGaussianBlur = filter
+                        .append("feGaussianBlur")
+                        .attr("stdDeviation", "2.5")
+                        .attr("result", "coloredBlur"),
+                    feMerge = filter.append("feMerge"),
+                    feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
+                    feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+                const chords = chord(data);
+                const focusIndex = roles.indexOf(pav.data.focusRole)
+                const group = svg.append("g")
+                    .selectAll("g")
+                    .data(chords.groups)
+                    .join("g");
+                group.append("path")
+                    .attr("fill", d => d.index === focusIndex ? activityColor : "lightgrey")
+                    .attr("stroke", d => d3.color(d.index === focusIndex ? activityColor : "lightgrey").darker())
+                    .attr("filter", "url(#glow)")
+                    .attr("d", arc)
+                    .attr("opacity", 0.7)
+                svg.append("g")
+                    .selectAll("path")
+                    .data(chords)
+                    .join("path")
+                    .attr("opacity", d => (d.source.index === focusIndex || d.target.index === focusIndex) ? 0.67 : 0.3)
+                    .attr("d", d => ribbon(d))
+                    .attr("fill", d => (d.source.index === focusIndex || d.target.index === focusIndex) ? activityColor : "lightgrey")
+                    .attr("stroke", d => d3.color((d.source.index === focusIndex || d.target.index === focusIndex) ? activityColor : "lightgrey").darker())
+                    .attr("filter", "url(#glow)")
+                    .append("title")
+                    .text(d => `${roles[d.source.index]} :${d.source.value}\n${roles[d.target.index]} :${d.target.value}`)
+                svg.append("g")
+                    .selectAll("g")
+                    .data(chords.groups)
+                    .join("g")
+                    .attr("transform", d => `rotate(${(d.startAngle + d.endAngle) / 2 * 180 / Math.PI - 90}) translate(${(outerRadius + innerRadius) / 2},0)`)
+                    .append("text")
+                    .attr("dy", "0.35em")
+                    .attr("transform", d => (d.startAngle + d.endAngle) / 2 > Math.PI ? "rotate(180)" : null)
+                    .text(d => roles[d.index])
+
+                const groupTick = group.append("g")
+                    .selectAll("g")
+                    .data(d => groupTicks(d, 5))
+                    .join("g")
+                    .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${outerRadius},0)`);
+
+                groupTick.append("line")
+                    .attr("stroke", "#000")
+                    .attr("x2", 6);
+
+                groupTick
+                    .filter(d => d.value % 10 === 0)
+                    .append("text")
+                    .attr("x", 15)
+                    .attr("dy", ".35em")
+                    .attr("transform", d => d.angle > Math.PI ? "rotate(180) translate(-26)" : null)
+                    .attr("text-anchor", d => d.angle > Math.PI ? "end" : null)
+                    .text(d => d.value);
+            }
+        }
+        pav.method.drawPersonalAbilityView = function () {
+            pav.method.drawRadarView(pav.data.focusRadarData, pav.data.focusRole, pav.config.focusRadar, '.focused .focusRadar')
+            pav.data.defocusRadarDataList.forEach((v, i) => pav.method.drawRadarView(v, pav.data.defocusRoleList[i], pav.config.defocusRadar, `.defocus .defocus_item${i + 1} svg`))
+            pav.method.drawDetailView()
+        }
+        pav.method.drawPersonalAbilityView()
+        // endregion
+        // region adv(agenda detail view)
+        const adv = {} // agenda detail view
+        // config
+        adv.config = {
+            timeSilce: 60,
+            rownum: 4,
+            w: "67rem",
+            h: "64rem",
+            innerRadius: 35,
+            outerRadius: 45,
+            circlePadding: 16,
+            marginLeft: 10,
+            marginTop: 8,
+            barWidth: 3,
+            barPadding: 1,
+        }
+        adv.method = {}
+        adv.method.changeText = function (val) {
+            document.querySelector(".adv-range span").innerHTML = `TimeSlice: [50~120]: ${val}s`
+        }
+        adv.method.updateData = function (circle_index, selected_agenda) {
+            const old_circle = adv.data.circles[circle_index]
+            const circle = {
+                circle_id: old_circle.circle_id,
+                start: old_circle.start,
+                end: old_circle.end,
+                sentences: old_circle.sentences,
+                words: [],
+                agenda_rate: old_circle.agenda_rate,
+                personGiveWordNum: {},
+                clickTag: old_circle.clickTag,
+            }
+            let words_dic = {} // 单词在各议题出现次数
+            let wordMapSentence = {}  // 所有包含这个单词的句子
+            let agenda_sentence = {} // 在一个时间段内出现的句子
+            roles.forEach(v => circle.personGiveWordNum[v] = 0) // 每个人的发言数（词数）
+            if (circle.clickTag == true) { // 单个议题切换为多个议题
+                circle.clickTag = false
+                circle.sentences.forEach(i => {
+                    const words = dialogs[i].text.split(" ")
+                    circle.personGiveWordNum[dialogs[i].role] += words.length
+                    words.forEach(w => {
+                        if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',')
+                            w = w.slice(0, w.length - 1)
+                        w = w.toLowerCase()
+                        if (!stopwords.has(w)) {
+                            if (!words_dic.hasOwnProperty(w)) {
+                                words_dic[w] = {}
+                                wordMapSentence[w] = []
+                                agendas.forEach((d, i) => words_dic[w][i] = 0)
+                                words_dic[w]['-'] = 0
+                            }
+                            wordMapSentence[w].push(i)
+                            words_dic[w][dialogs[i].agenda] += 1
+                        }
+                    })
+                    agenda_sentence[dialogs[i].agenda] = (agenda_sentence[dialogs[i].agenda] || 0) + 1
+                })
+                for (let [key, value] of Object.entries(words_dic)) {
+                    circle.words.push({
+                        word: key, //单词
+                        cnt: Object.values(value).reduce((a, b) => a + b), //单词在此时间段出现几次
+                        agenda_distribution: value,  // 单词在每个议题出现几次
+                        sentenceContainThisWord: wordMapSentence[key] // 包含该单词的所有句子的id
+                    })
+                }
+                // for (let [key, value] of Object.entries(agenda_sentence)) {
+                //     circle.agenda_rate.push({id: key, value: value})
+                // }
+
+            } else { //多个议题切换为指定议题
+                circle.clickTag = true
+                circle.highlightArc = selected_agenda
+                circle.sentences.forEach(i => {
+                    if (dialogs[i].agenda === selected_agenda) {
+                        const words = dialogs[i].text.split(" ")
+                        circle.personGiveWordNum[dialogs[i].role] += words.length
+                        words.forEach(w => {
+                            if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',')
+                                w = w.slice(0, w.length - 1)
+                            w = w.toLowerCase()
+                            if (!stopwords.has(w)) {
+                                if (!words_dic.hasOwnProperty(w)) {
+                                    words_dic[w] = {}
+                                    wordMapSentence[w] = []
+                                    agendas.forEach((d, i) => words_dic[w][i] = 0)
+                                    words_dic[w]['-'] = 0
+                                }
+                                wordMapSentence[w].push(i)
+                                words_dic[w][dialogs[i].agenda] += 1
+                            }
+                        })
+                        agenda_sentence[dialogs[i].agenda] = (agenda_sentence[dialogs[i].agenda] || 0) + 1
+                    }
+                })
+                for (let [key, value] of Object.entries(words_dic)) { //
+                    circle.words.push({
+                        word: key, //单词
+                        cnt: Object.values(value).reduce((a, b) => a + b), //单词在此时间段出现几次
+                        agenda_distribution: value,  // 单词在每个议题出现几次
+                        sentenceContainThisWord: wordMapSentence[key] // 包含该单词的所有句子的id
+                    })
+                }
+                // for (let [key, value] of Object.entries(agenda_sentence)) {
+                //     circle.agenda_rate.push({id: key, value: value})
+                // }
+            }
+            adv.data.circles[circle_index] = circle
+        }
+        adv.method.dataGenerator = function () {
+            const data = []
+            let start = 0
+            let circle_id = 0
+            let circle = {
+                circle_id,
+                start: 0,
+                end: adv.config.timeSilce,
+                sentences: [],
+                words: [],
+                agenda_rate: [],
+                personGiveWordNum: {},
+                clickTag: false,
+            }
+            let words_dic = {} // 单词在各议题出现次数
+            let wordMapSentence = {}  // 所有包含这个单词的句子
+            let agenda_sentence = {} // 在一个时间段内出现的句子
+            let maxWordNum = 0 // 统计 personGiveWordNum 中的最大值，用于设定比例尺上限
+            roles.forEach(v => circle.personGiveWordNum[v] = 0) // 每个人的发言数（词数）
+            for (let i = 0; i < dialogs.length;) {
+                if (Number(dialogs[i].startTime) < start + adv.config.timeSilce) {
+                    circle.sentences.push(i)
+                    const words = dialogs[i].text.split(" ")
+                    circle.personGiveWordNum[dialogs[i].role] += words.length
+                    words.forEach(w => {
+                        if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',' || w[w.length - 1] == '-')
+                            w = w.slice(0, w.length - 1)
+                        w = w.toLowerCase()
+                        if (!stopwords.has(w)) {
+                            if (!words_dic.hasOwnProperty(w)) {
+                                words_dic[w] = {}
+                                wordMapSentence[w] = []
+                                agendas.forEach((d, i) => words_dic[w][i] = 0)
+                                words_dic[w]['-'] = 0
+                            }
+                            wordMapSentence[w].push(i)
+                            words_dic[w][dialogs[i].agenda] += 1
+                        }
+                    })
+                    agenda_sentence[dialogs[i].agenda] = (agenda_sentence[dialogs[i].agenda] || 0) + 1
+                    i++
+                } else {
+                    for (let [key, value] of Object.entries(words_dic)) {
+                        circle.words.push({
+                            word: key,
+                            cnt: Object.values(value).reduce((a, b) => a + b),
+                            agenda_distribution: value,
+                            sentenceContainThisWord: wordMapSentence[key]
+                        })
+                    }
+                    for (let [key, value] of Object.entries(agenda_sentence)) {
+                        circle.agenda_rate.push({ id: key, value: value })
+                    }
+                    data.push(circle)
+                    words_dic = {}
+                    wordMapSentence = {}
+                    start = start + adv.config.timeSilce
+                    agenda_sentence = {}
+                    circle_id += 1
+                    Object.values(circle.personGiveWordNum).forEach(value => maxWordNum < value ? maxWordNum = value : null)
+                    circle = {
+                        circle_id,
+                        start,
+                        end: start + adv.config.timeSilce,
+                        sentences: [],
+                        words: [],
+                        agenda_rate: [],
+                        personGiveWordNum: {},
+                        clickTag: false
+                    }
+                    roles.forEach(v => circle.personGiveWordNum[v] = 0)
+                }
+            }
+            // 处理最后一次循环结束
+            for (let [key, value] of Object.entries(words_dic)) {
+                circle.words.push({
+                    word: key,
+                    cnt: Object.values(value).reduce((a, b) => a + b),
+                    agenda_distribution: value
+                })
+            }
+            for (let [key, value] of Object.entries(agenda_sentence)) {
+                circle.agenda_rate.push({ id: key, value: value })
+            }
+            Object.values(circle.personGiveWordNum).forEach(value => maxWordNum < value ? maxWordNum = value : null)
+            data.push(circle)
+            // end
+            console.log(maxWordNum)
+            adv.method.x = d3.scaleLinear()
+                .domain([0, maxWordNum * 1.05])
+                .range([1 / 4 * Math.PI, 1.25 * Math.PI])
+            return { circles: data }
+        }
+        adv.data = adv.method.dataGenerator()
+        adv.method.changeSelectorValue = function (value) {
+            adv.config.timeSilce = Number(value)
+            adv.data = adv.method.dataGenerator()
+            adv.method.drawView()
+        }
+        // adv.method.largeOneCircle = function (circle, agenda) {
+        //     console.log(circle, agenda)
+        //     const svg = d3.select('.adv svg')
+        //         .attr("width", adv.config.w)
+        //         .attr("height", adv.config.h)
+        //         .attr("style", "max-width: 100%; margin: 0 1rem;height: auto; height: intrinsic;");
+        //     svg.selectAll("*").remove()
+        // }
+        adv.method.drawView = function () {
+
+            const canvas1 = document.createElement("canvas")
+            const canvas2 = document.createElement("canvas")
+            const canvas3 = document.createElement("canvas")
+
+            const ctxs = [canvas1.getContext("2d"), canvas2.getContext("2d"), canvas3.getContext("2d")]
+            ctxs[0].font = '18px sans-serif'
+            ctxs[1].font = '10px sans-serif'
+            ctxs[2].font = '8px sans-serif'
+            const fontsize = ctxs.map(v => Number(v.font.slice(0, v.font.indexOf('px'))))
+            const color = d3.schemeSet2
+            const Textoffset = adv.config.outerRadius - adv.config.innerRadius + 5
+            const barchart_arc = (d, i) => d3.arc()
+                .innerRadius(adv.config.outerRadius + adv.config.barPadding + (adv.config.barWidth + adv.config.barPadding) * i)
+                .outerRadius(adv.config.outerRadius + adv.config.barPadding + (adv.config.barWidth + adv.config.barPadding) * i + adv.config.barWidth)
+                .startAngle(1 / 4 * Math.PI)
+                .endAngle(adv.method.x(d.num))()
+            // var wid = $(".advbody").width()
+            // var hei = $(".advbody").height + 50
+            const svg = d3.select('.advbody svg')
+                .attr("width", adv.config.w)
+                .attr("height", adv.config.h)
+                // .attr("width", wid)
+                // .attr("height", hei)
+                // .attr("style", "max-width: 100%; margin: 0 1rem;height: auto; height: intrinsic;");
+                .attr("style", "max-width: 100%;height: intrinsic;");
+            svg.selectAll("*").remove()
+            console.log(adv.data.circles)
+            adv.data.circles.forEach((v, i) => {
+                drawTitle(adv.config.marginLeft + (i % adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius, Math.floor(i / adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding + adv.config.marginTop), i * adv.config.timeSilce + '-' + (i + 1) * adv.config.timeSilce)
+                drawCircle(v, adv.config.marginLeft + (i % adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius, Math.floor(i / adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding + adv.config.marginTop) + adv.config.outerRadius + Textoffset)
+            })
+
+            function drawTitle(x, y, text) {
+                const g = svg.append("g")
+                    .attr("font-family", "sans-serif")
+                    .attr("transform", `translate(${x},${y})`)
+                g.append("text")
+                    .attr("alignment-baseline", "before-edge")
+                    .attr("text-anchor", "middle")
+                    .text(text)
+            }
+
+            function drawCircle(circle, x, y, topk = 10) {
+                const { sentences, words, agenda_rate, personGiveWordNum, highlightArc } = circle
+                const personGiveWordNumList = roles.map(role => ({ role: role, num: personGiveWordNum[role] }))
+                const topWords = calTopWords(words, topk)
+                const arcs = d3.pie().padAngle(0).sort(null).value(d => d.value)(agenda_rate);
+                const arc = d3.arc().innerRadius(adv.config.innerRadius).outerRadius(adv.config.outerRadius);
+                const svg = d3.select('.advbody svg')
+
+                const g = svg.append("g")
+                    .attr("font-family", "sans-serif")
+                    .attr("transform", `translate(${x},${y})`)
+
+                g.selectAll("path")
+                    .data(arcs)
+                    .join("path")
+                    .attr("fill", d => agenda_rate[d.index].id === '-' ? 'grey' : color[agenda_rate[d.index].id])
+                    .attr("d", arc)
+                    .style("cursor", "pointer")
+                    .attr("stroke", d => '' + d.data.id === '' + highlightArc ? "yellow" : "none")
+                    .attr("stroke-width", d => '' + d.data.id === '' + highlightArc ? 3 : "none")
+                    .on("click", function (e, d) { // 点击圆环的交互
+                        adv.method.updateData(circle.circle_id, d.data.id !== '-' ? Number(d.data.id) : d.data.id)
+                        adv.method.drawView()
+                    })
+
+                // 外层彩带
+                const bar = g.append("g")
+                bar.selectAll("path")
+                    .data(personGiveWordNumList)
+                    .join("path")
+                    .attr("fill", d => personColor(d.role))
+                    .attr("d", barchart_arc)
+                //
+                const y_pos = []
+                const r = adv.config.innerRadius
+                const wordPadding = 2
+                let offset = r - 1
+                for (let i in topWords) {
+                    const w = topWords[i].word
+                    let canPlace = couldPlace(offset, w, r)
+                    while (canPlace < 0 && Math.abs(offset) < r) {
+                        offset -= 2
+                        canPlace = couldPlace(offset, w, r)
+                    }
+                    if (Math.abs(offset) >= r)
+                        break
+                    y_pos.push({ font: fontsize[canPlace], y: -offset, word: topWords[i] })
+                    offset -= fontsize[canPlace]
+                }
+                g.selectAll("text")
+                    .data(y_pos)
+                    .join("text")
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "before-edge")
+                    .attr("font-size", d => d.font)
+                    //    .attr("textLength",r)
+                    .attr("y", d => d.y)
+                    .text(d => d.word.word)
+                    .style("cursor", "pointer")
+                    .on("click", function (e, d) {  // 交互：在itav视图中高亮选中关键词相关句子
+                        const { word, sentenceContainThisWord } = d.word
+                        d3.select(".itav svg .bindNodeArea").selectAll("rect").attr("opacity", 0.1)
+                        const bindEdgeTitle = d3.select(".itav svg .bindEdgeTitle")
+                        bindEdgeTitle.selectAll("circle").attr("opacity", 0.1)
+                        bindEdgeTitle.selectAll("text").attr("opacity", 0.1)
+                        d3.select(".itav svg .bindEdge").selectAll("path").attr("opacity", 0.1)
+                        d3.select(".itav svg .singleNode").selectAll("ellipse").attr("opacity", 0.1)
+                        const highlightSession = [...new Set(sentenceContainThisWord.map(v => itav.data.bind_edges.idx2sessionId[v]))]
+                        highlightSession.forEach(v => {
+                            d3.selectAll(`.sidNode_${v}`).attr("opacity", 1)
+                            d3.selectAll(`.sidEge_${v}`).attr("opacity", 0.7)
+                        })
+                    })
+            }
+
+            function calTopWords(words, k) {
+                const topWords = words.sort((a, b) => b.cnt - a.cnt).slice(0, k)
+                return topWords
+            }
+
+            function calTextWidth(r, dis) {
+                return Math.sqrt(Math.pow(r, 2) - Math.pow(dis, 2)) * 2
+            }
+
+            function couldPlace(offset, word, r) {
+                for (let i in fontsize) {
+                    let need = ctxs[i].measureText(word).width
+                    let real = 0
+                    if (offset < 0) {
+                        if (Math.abs(offset - fontsize[i]) < r)
+                            real = calTextWidth(r, offset - fontsize[i])
+                    } else {
+                        real = calTextWidth(r, offset)
+                    }
+                    if (real >= need)
+                        return i
+                }
+                return -1
+            }
+        }
+        adv.method.drawView()
+
+        // endregion
+        // region ctxv(context view)
+        const ctxv = {}
+        ctxv.config = {
+            w: 420,
+            h: 580,
+            lineHeight: 16,
+            textWidth: "24rem",
+            overviewWidth: 70,
+            initalHeight: 30,
+        }
+        ctxv.method = {}
+        ctxv.method.draw = function () {
+            const svg = d3.select(".ctxv svg")
+                .attr("width", ctxv.config.w)
+                .attr("height", ctxv.config.h)
+                .attr("style", "max-width: 100%;height: 100%; height: intrinsic;");
+            svg.selectAll("*").remove()
+            svg.append("foreignObject")
+                .attr("id", "ctxForeignObject")
+                .attr("width", ctxv.config.textWidth)
+                .attr("height", ctxv.config.h)
+                .attr("transform", `translate(${ctxv.config.overviewWidth},0)`)
+                .style("overflow", "scroll")
+                .style("overflow-x", "hidden")
+                .append("xhtml:div")
+                //.attr("style",`width:100%,height:100%,overflow:scroll`)
+                .selectAll("p")
+                .data(dialogs)
+                .join("p")
+                .style('Font', "10px sans-serif")
+                .attr("class", (d, i) => `ctxv-p ${i}`)
+                .text(d => d.role + ': ' + d.text)
+            // .on("click", function (e, d) {
+            //     // console.log(this.offsetTop, this.offsetTop - ctxv.config.h, this.parentNode.parentNode.scrollTop, e, d)
+            //     //this.parentNode.parentNode.scrollTo(0,0)
+            //
+            // })
+
+        }
+        ctxv.method.generateData = function () {
+            const ps = document.querySelectorAll('.ctxv-p')
+            const rects = []
+            const canvas = document.createElement("canvas")
+            const ctx = canvas.getContext("2d")
+            ctx.font = "10px sans-serif"
+            ps.forEach((v, i) => {
+                //   console.log(ctx.measureText(v.innerText).width / v.clientWidth)
+                rects.push({
+                    id: i,
+                    rows: v.clientHeight / ctxv.config.lineHeight,
+                    scrollTop: v.offsetTop,
+                    width: Number("0." + ("" + ctx.measureText(v.innerText).width / v.clientWidth).split(".")[1])
+                })
+            })
+            console.log("rect", rects)
+
+            return { rects }
+        }
+        ctxv.method.drawOverview = function () {
+            const row2id = {}
+            const id2row = {}
+            const rows = ctxv.data.rects.reduce((total, rect) => {
+                for (let i = total; i < total + rect.rows; i++) {
+                    row2id[Math.floor(i)] = rect.id
+                }
+                id2row[rect.id] = total
+                return total + rect.rows
+            }, 0)
+            ctxv.data.row2id = row2id
+            ctxv.data.id2row = id2row
+            ctxv.config.rectHeight = ctxv.config.h / rows
+            const yscale = d3.scaleLinear() // Map a continuous, quantitative domain to a discrete range
+                .domain([0, rows])
+                .range([0, ctxv.config.h])
+            ctxv.method.yscale = yscale
+            const brush = d3.brushY(yscale).extent([[0, 0], [ctxv.config.overviewWidth, ctxv.config.h]]).on("start brush end", brushed);
+            ctxv.method.brush = brush
+            const svg = d3.select(".ctxv svg")
+                .attr("width", ctxv.config.w)
+                .attr("height", ctxv.config.h)
+                .attr("style", "max-width: 100%;height: 100% !important; height: intrinsic;");
+            const overview = svg.append("g")
+            let sum = 0
+            overview.selectAll("g")
+                .data(ctxv.data.rects)
+                .join("g")
+                .attr("class", (d, i) => `gid_${i}`)
+                .each(function (p) {
+                    // console.log(p)
+                    d3.select(this)
+                        .selectAll("rect")
+                        .data(new Array(Math.ceil(p.rows)).fill(0))
+                        .join("rect")
+                        .attr("x", 0)
+                        .attr("y", (d, i) => yscale(sum + i))
+                        .attr("width", (d, i) => i === p.rows - 1 ? p.width * ctxv.config.overviewWidth : ctxv.config.overviewWidth)
+                        .attr("height", ctxv.config.rectHeight)
+                        .attr("fill", dialogs[p.id].agenda == "-" ? "grey" : d3.schemeSet2[dialogs[p.id].agenda])
+                    sum += p.rows
+                })
+            const initalHeight = ctxv.config.initalHeight
+            overview.append("g")
+                .attr("class", "y brush")
+            const brushG = overview.select('g.brush')
+            // d3.select("#ctxForeignObject")
+            //    .on("scroll", (e) => {
+            //        const y0 = e.currentTarget.scrollTop
+            //        const [_, Y1] = yscale.range();
+            //        const dy = yscale(initalHeight)
+            //        d3.select(".y.brush")
+            //            .call(brush.move, y0 + dy > Y1 ? [Y1 - dy, Y1] : [y0, y0 + dy]);
+            //        console.log(e.currentTarget.scrollTop)
+            //    })
+
+            brushG.call(brush)
+                .call(brush.move, [0, initalHeight].map(yscale)) // 默认选择框
+                .call(g => g.select(".overlay")
+                    .datum({ type: "selection" })
+                    .on("mousedown touchstart", beforebrushstarted));
+            brushG.select(".selection").attr("fill-opacity", 0.7)
+            brushG.selectAll(".handle").remove()
+
+            function beforebrushstarted(event) {
+                const dy = yscale(initalHeight) - yscale(0); // Use a fixed width when recentering.
+                const cy = d3.pointers(event)[0][1];
+
+                const [y0, y1] = [cy - dy / 2, cy + dy / 2];
+                const [Y0, Y1] = yscale.range();
+                d3.select('.y.brush')
+                    .call(brush.move, y1 > Y1 ? [Y1 - dy, Y1]
+                        : y0 < Y0 ? [Y0, Y0 + dy]
+                            : [y0, y1]);
+            }
+
+            function brushed(event) {
+                const selection = event.selection;
+
+                if (selection === null) {
+
+                } else {
+                    const [y0, y1] = selection.map(yscale.invert);
+                    // console.log('y0',y0,y1,'id',row2id[Math.floor(y0)],dialogs[row2id[Math.floor(y0)]].text,dialogs[row2id[Math.floor(y0)]].agenda)
+                    var idx = row2id[Math.floor(y0)]
+                    // document.querySelector('#ctxForeignObject').scrollTo(0, ctxv.data.rects[Math.floor(row2id[Math.floor(y0)])].scrollTop)
+                    document.querySelector('#ctxForeignObject').scrollTo(0, ctxv.data.rects[idx].scrollTop)
+
+                }
+            }
+
+        }
+        ctxv.method.draw()
+        ctxv.data = ctxv.method.generateData()
+        ctxv.method.drawOverview()
+    // const video = document.querySelector('.video video')
+    // video.addEventListener('timeupdate',function(e){
+    //     console.log(e.currentTarget.currentTime)
+    // })
+
+
+    </script>
+
+
+</body>
+
+</html>

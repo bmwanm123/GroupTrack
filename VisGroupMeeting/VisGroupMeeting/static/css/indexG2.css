@@ -1,0 +1,580 @@
+html {
+    font-size: 10px;
+    height: 99vh;
+    width: 100vw;
+    /* height: 120%;
+    width: 100%; */
+    overflow-x: hidden;
+    overflow-y:hidden;
+    /*font-family: "Microsoft YaHei UI";*/
+    font-family: "sans-serif";
+}
+
+
+body{
+    height: 98%;
+    width: 98%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+body::-webkit-scrollbar {
+    -webkit-appearance: none;
+   }
+   body::-webkit-scrollbar:vertical {
+    width: 11px;
+   }
+   body::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+   }
+
+
+
+
+/* body分为三块 */
+
+div.Left{
+    /* width: 25%; */
+    width: 21.5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.groupTitle{
+    width: 99.5%;
+    height: 3.8%;
+    border: solid #999999 1px;
+    border-bottom: solid #999999 0px;
+    border-radius: 5px;
+}
+.ListHead{
+    width: 99.5%;
+    height: 6%;
+}
+.groupSum{
+    width: 99.5%;
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: solid #999999 1px;
+}
+
+.groupSum::-webkit-scrollbar {
+    -webkit-appearance: none;
+   }
+.groupSum::-webkit-scrollbar:vertical {
+width: 3px;
+}
+.groupSum::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, .5);
+}
+/* div.groupSum svg.multi {
+    overflow-y: scroll;
+} */
+
+div.Middle{
+    /* width: 56%; */
+    width: 59.5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Interaction {
+    width: 100%;
+    height: 34%;
+    display: flex;
+    flex-direction: row;
+}
+.Pav_Aga{
+    width: 100%;
+    height: 66%;
+    display: flex;
+    flex-direction: column;
+}
+
+.AgendaV {
+    width: 99.1%;
+    height: 53%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    border: solid #999999 1px;
+}
+
+.PerformanceV {
+    width: 99.1%;
+    height: 46.5%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    border: solid #999999 1px;
+    margin-top: 0.5rem;
+}
+.AgenTitle{
+    height: 10%;
+}
+.AgenBody{
+    height: 90%;
+}
+.PersonTitle{
+    height: 11%;
+}
+.PersonBody{
+    height: 89%;
+}
+
+
+div.Right{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+div.views {
+    display: flex;
+    flex-direction: row;
+    width: 115%;
+    height: 140%;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+.viewName {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    text-align: center;
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    font-size: 16px;
+    /* width: 35%; */
+    width: 20%;
+}
+.viewName_per {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    font-size: 16px;
+    /* width: 35%; */
+    width: 20%;
+}
+.viewName1 {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    text-align: center;
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    font-size: 16px;
+    width: 30%;
+}
+.viewName_pro {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    text-align: center;
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    font-size: 16px;
+    width: 41%;
+}
+.viewName_agenda {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    font-size: 16px;
+    width: 30%;
+}
+.viewName2 {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    text-align: center;
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    font-size: 16px;
+    width: 45%;
+}
+.viewName3 {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    text-align: center;
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    font-size: 16px;
+    /* width: 35%; */
+    width: 34%;
+}
+.viewName4 {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    text-align: center;
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    font-size: 16px;
+    /* width: 35%; */
+    width: 38%;
+}
+.viewName5 {
+    color: #5C6A76;
+    font-family: "Microsoft YaHei UI";
+    text-align: center;
+    line-height: 4rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    font-size: 16px;
+    /* width: 35%; */
+    width: 37%;
+}
+
+
+
+div.itav {
+    height: 99%;
+    width: 65%;
+    border: solid #999999 1px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+div.itav-toolbar {
+    height: 4rem;
+    /*margin-bottom: 1rem;*/
+    flex-shrink: 0;
+    border-bottom: solid #999999 1px;
+    border-radius: 0.5rem;
+    background: #F7F7F7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:#5C6A76;
+}
+.itav-body{
+    height: 90%;
+}
+div.itav-toolbar button{
+    margin-right:1rem;
+}
+div.itav-toolbar-right-component{
+    width:55%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+div.itav-selector{
+    margin-right:1rem;
+}
+div.itav-selector select{
+    height:2.5rem;
+}
+div.itav svg.up {
+    width: 675;
+    height: 367;
+    flex-shrink: 0;
+}
+
+div.itav svg.down {
+    width: 800px;
+    height: calc(80px + 1rem);
+    flex-shrink: 0;
+}
+
+div.adv {
+    height: 100%;
+    width: 41%;
+    border: solid #999999 1px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    /* position: relative; */
+    top: calc(-18rem - 33rem - 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.advbody{
+    width: 100%;
+    height: 93%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+div.adv div.adv-toolbar {
+    height: 4rem;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    border-radius: 5px;
+    background: #F7F7F7;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div.adv-range {
+    display: flex;
+    align-items: center;
+    color: #5C6A76;
+    white-space: nowrap;
+    margin-right: 1rem;
+}
+div.adv-searchbar{
+    display:flex;
+    align-items: center;
+}
+div.ctxv-container {
+    height:66%;
+    width: 100%;
+    margin-left: 1rem;
+    border: solid #999999 1px;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+
+div.ctxv-toolbar {
+    height: 4rem;
+    width: 39rem;
+    border-bottom: solid #999999 1px;
+    border-right: solid #999999 1px;
+    border-radius: 0.5rem;
+    background: #F7F7F7;
+    display: flex;
+    justify-content: space-between;
+}
+div.ctxv-searchbar{
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    width:30%;
+}
+.ctxvTitle{
+    height: 5%;
+}
+div.ctxv {
+    /* height: 58rem;
+    width: 30rem; */
+    height: 55%;
+    width: 100%;
+    border-bottom: dotted #999999 1px;;
+    /*margin-bottom: 1rem;*/
+    padding: 0;
+    font-family: "sans-serif";
+    font-size: 10px;
+}
+
+div.ctxv svg {
+    display: flex;
+    justify-content: flex-end;
+}
+
+div.video {
+    /* height: 29rem;
+    width: 30rem; */
+    height: 40%;
+    width: 96%;
+    /* border: solid #999999 1px; */
+    border-radius: 5px;
+    border-top: none;
+    margin: 10px;
+}
+
+div.video video {
+    width: 97%;
+    height: 93%;
+}
+
+div.pav-container {
+    /* position: relative;
+    top: calc(-7rem - 33rem - 4rem); */
+    height: 100%;
+    width: 59%;
+    display: flex;
+    flex-direction: column;
+    border: solid #999999 1px;
+    border-radius: 0.5rem;
+}
+
+div.pav-toolbar {
+    height: 4rem;
+    width: 100%;
+    border-bottom: solid #999999 1px;
+    border-right: solid #999999 1px;
+    border-radius: 0.5rem;
+    background: #F7F7F7;
+    display: flex;
+    flex-direction: row;
+}
+div.pav-selector{
+    display:flex;
+    align-items: center;
+    margin-left:2rem;
+     color: #5C6A76;
+}
+div.pav-selector select{
+    height:20px;
+    width:110px;
+    margin-left:1rem;
+
+}
+div.pav {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+div.GroupProject {
+    height: 99%;
+    width: 35%;
+    border: solid #999999 1px;
+    border-radius: 5px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.PTitle{
+    width: 100%;
+    height: 10%;
+}
+.PBody{
+    width: 100%;
+    height: 90%;
+}
+
+div.rv-container {
+    height: 33.5%;
+    width: 100%;
+    border: solid #999999 1px;
+    border-radius: 5px;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+div.rv-toolbar {
+    height: 4rem;
+    width:100%;
+    border-bottom: solid #999999 1px;
+    border-radius: 0.5rem;
+    background: #F7F7F7;
+    display: flex;
+    justify-content: space-between;
+}
+div.rv-toolbar-right-component{
+    width:50%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+div.rv-toolbar-right-component button{
+    margin-right: 1rem;
+}
+div.rv {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.rv::-webkit-scrollbar {
+    -webkit-appearance: none;
+   }
+   .rv::-webkit-scrollbar:vertical {
+    width: 11px;
+   }
+   .rv::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+   }
+
+
+#ctxForeignObject::-webkit-scrollbar {
+    -webkit-appearance: none;
+   }
+   #ctxForeignObject::-webkit-scrollbar:vertical {
+    width: 11px;
+   }
+   #ctxForeignObject::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, .5);
+   }
+
+div.rv-modal-dialog{
+    max-width: 98vw;
+}
+div.rv-modal-body{
+    height:98vh;
+    width:98vw;
+}
+
+div.defocus {
+    width: 16%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+div.focused {
+    border-left: 0.1rem dotted #999999;
+    width: 84%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+div.defocus div {
+    border-top: dotted 1px #999999;
+    height: 33%
+}
+.Select{
+    width: 65%;
+    display: flex;
+    flex-direction: row;
+}
+.list-selector1{
+    padding-left: 2rem;
+}
+.list-selector2{
+    margin-left: 3%;
+}
+div.list-selector1 select {
+    /* height: 2.5rem; */
+}
+div.list-selector2 select {
+    /* height: 2.5rem; */
+}
+
+/*div.pav-container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    width: 80rem;*/
+/*    height: 50rem;*/
+/*}*/
+
+/*div.pav-toolbar {*/
+/*    width: 100%;*/
+/*    height: 10rem;*/
+/*}*/
+
+
